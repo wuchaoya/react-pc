@@ -5,6 +5,7 @@ import reducer from './reducers';
 import Base from './router/Base';
 import finalCreateStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
+import './style/reast.css';
 
 const store = finalCreateStore(reducer);
 ReactDOM.render(

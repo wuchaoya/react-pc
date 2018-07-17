@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import {
   Home,
+  Login
 } from '../containers';
 
 class Base extends Component {
@@ -15,6 +16,7 @@ class Base extends Component {
       <Router>
         <div>
           <Route exact path='/' component={Home} />
+          <Route exact path='/login' component={Login} />
         </div>
       </Router>
     );

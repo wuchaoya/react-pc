@@ -1,3 +1,8 @@
+/*
+* 按钮
+* @name string
+* @type number
+ */
 import React, { Component } from 'react';
 
 export default class LoginButton extends Component {
@@ -8,10 +13,12 @@ export default class LoginButton extends Component {
 		}
 	}
 	render () {
-		const { name } = this.props;
+		const { name , margin} = this.props;
 		return (
-			<div style={this._renderStyle()} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>
-				<span>{name}</span>
+			<div style={margin ? margin : {}}>
+				<div style={this._renderStyle()} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>
+					<span>{name}</span>
+				</div>
 			</div>
 		)
 	}
