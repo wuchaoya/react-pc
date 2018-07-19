@@ -3,11 +3,11 @@ import React, {Component} from 'react';
 import * as placeholder from '../constants/placeholder';
 import { loginStyle } from '../style/LoginStyle';
 import {
-	LoginButton, LoginInput, InputView, Title, SubTitle
+	LoginButton, LoginInput, InputView, Title, SubTitle, PasswordCheckBox
 } from '../components';
 
 
-class Login  extends Component {
+class SignIn  extends Component {
 	
 	constructor (props) {
 		super(props)
@@ -17,17 +17,17 @@ class Login  extends Component {
 	render () {
 		return (
 			<div>
-				<Title text={placeholder.titleText} />
+				<Title center text={placeholder.titleText} />
 				<SubTitle text={placeholder.subTitleText} margin={loginStyle.subTitleMargin} />
 				<LoginInput type='text' placeholder={placeholder.userText} />
 				<LoginInput type='passworld' placeholder={placeholder.passText} />
+				<PasswordCheckBox margin={loginStyle.checkBox} />
 				<LoginButton margin={loginStyle.topButton} name='登录' type='1' />
-				<LoginButton name='立即注册' type='2' />
 			</div>
 		)
 	}
 }
 
-Login = InputView(Login);
+SignIn = InputView(SignIn);
 
-export default Login;
+export default SignIn;

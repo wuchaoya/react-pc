@@ -3,9 +3,10 @@
  * @Component Component
  */
 import React, {Component} from 'react';
+
 import * as images from '../constants/images';
 
-export default (Component) => {
+export default (MyComponent) => {
 	class NewComponent extends Component {
 		constructor() {
 			super();
@@ -26,7 +27,7 @@ export default (Component) => {
 				<div style={styles.container}>
 					<div style={styles.backgroundImg}>
 						<div style={styles.inputBox}>
-							<Component username={this.state.username}/>
+							<MyComponent data={this.state.data} {...this.props} username={this.state.username}/>
 						</div>
 					</div>
 				</div>
@@ -36,7 +37,6 @@ export default (Component) => {
 	
 	return NewComponent
 }
-
 const styles = {
 	container: {
 		width: window.innerWidth,

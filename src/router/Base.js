@@ -7,7 +7,9 @@ import { connect } from 'react-redux';
 
 import {
   Home,
-  Login
+  SingIn,
+  SingUp,
+	ForgotPassword
 } from '../containers';
 
 class Base extends Component {
@@ -16,7 +18,9 @@ class Base extends Component {
       <Router>
         <div>
           <Route exact path='/' component={Home} />
-          <Route exact path='/login' component={Login} />
+          <Route exact path='/singin' component={SingIn} />
+          <Route exact path='/singup' component={SingUp} />
+          <Route exact path='/password' component={ForgotPassword} />
         </div>
       </Router>
     );

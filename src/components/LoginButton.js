@@ -5,12 +5,16 @@
  */
 import React, { Component } from 'react';
 
+import * as Hover from '../utils/Hover';
+
 export default class LoginButton extends Component {
 	constructor (props) {
 		super(props)
 		this.state = {
 			hover: false
 		}
+		this._onHoverState = Hover._onHoverState.bind(this);
+		this._toggleHover = Hover._toggleHover.bind(this);
 	}
 	render () {
 		const { name , margin} = this.props;
@@ -39,14 +43,12 @@ export default class LoginButton extends Component {
 	}
 	
 	_onHoverState () {
-		console.log(this.state.hover)
 		this.setState({
 			hover: true
 		})
 	}
 	
 	_toggleHover (){
-		console.log(this.state.hover)
 		this.setState({
 			hover: false
 		})
@@ -62,7 +64,9 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: '27px',
-		fontSize: '20px'
+		fontSize: '20px',
+		cursor:'pointer'
+		
 	},
 	buttonOrange: {
 		backgroundColor: '#fc8056',

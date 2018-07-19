@@ -8,4 +8,7 @@ export const loginStyle = {
 		marginTop: '36px',
 		marginBottom: '12px'
 	},
+	checkBox: {
+		marginTop: '18px'
+	}
 }

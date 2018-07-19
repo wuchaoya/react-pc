@@ -31,7 +31,7 @@ const styles = {
 		border: '0',
 		color: '#222',
 		paddingLeft: '6px',
-		borderBottom: '1px solid #c8c8c8',
+		borderBottom: '1px solid #E9E9E9',
 		lineHeight: '68px'
 	}
 }
