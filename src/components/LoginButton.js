@@ -19,7 +19,7 @@ export default class LoginButton extends Component {
 	render () {
 		const { name , margin} = this.props;
 		return (
-			<div style={margin ? margin : {}}>
+			<div onClick={this.props.onclick} style={margin ? margin : {}}>
 				<div style={this._renderStyle()} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>
 					<span>{name}</span>
 				</div>

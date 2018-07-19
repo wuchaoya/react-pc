@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/actions';
-import { LoginButton, LoginInput} from '../components';
+import { TabNav, HomeTitle, List } from '../components';
+import { HomeStyle }from '../style/HomeStyle';
 import * as placeholder from '../constants/placeholder';
+
 
 
 class Home extends Component {
@@ -17,9 +19,11 @@ class Home extends Component {
 		console.log(this.props)
 		return (
 			<div>
-					<LoginInput type='text' placeholder={placeholder.userText} />
-					<LoginButton name='登录' type='1' />
-			
+				<TabNav/>
+				<div style={HomeStyle.container}>
+					<HomeTitle title={placeholder.homeTitleText} />
+					<List/>
+				</div>
 			</div>
 		)
 	}

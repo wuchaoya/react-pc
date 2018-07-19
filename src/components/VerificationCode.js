@@ -17,8 +17,6 @@ export default class VerificationCode  extends Component {
 	}
 	
 	render () {
-		console.log('111')
-		console.log(this.props.data)
 		return (
 			<div style={styles.constants}>
 				<LoginInput type='text' placeholder={placeholder.codeText} />

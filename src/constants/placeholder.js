@@ -9,4 +9,6 @@ export const forgotPasswordText = '忘记密码';
 export const forgotPasswordButtonText = '确定';
 export const againPasswordText = '请再次输入密码';
 export const signUpTitleText = '注册';
-export const signUpSubTitleText = '已有账号,立即登录'
+export const signUpSubTitleText = '已有账号,立即登录';
+export const cloudConqtrolText = '爱云兔云手机群控制平台';
+export const homeTitleText = '订单详情';

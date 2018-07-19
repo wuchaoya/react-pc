@@ -31,7 +31,7 @@ export default class  extends Component {
 		let { subTitleText } = this.props;
 		if ( subTitleText) {
 			return (
-				<span style={this._renderStyle()} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>{subTitleText}</span>
+				<span onClick={this.props.subTitleOnChick} style={this._renderStyle()} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>{subTitleText}</span>
 			)
 		}
 	}

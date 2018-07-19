@@ -1,4 +1,6 @@
-
+/**
+ * 忘记密码
+ */
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
@@ -18,7 +20,6 @@ class ForgotPassword  extends Component {
 	}
 	
 	render () {
-		console.log(this.props)
 		return (
 			<div>
 				<Title text={placeholder.forgotPasswordText} />
