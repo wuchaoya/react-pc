@@ -2,6 +2,7 @@
  * 导航
  */
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
 import * as placeholder from '../constants/placeholder';
 
@@ -11,33 +12,37 @@ export default class TabNav  extends Component {
 		super(props)
 		this.state = {
 			navList : [
-				'设备管理',
-				'购买',
-				'个人中心',
-				'退出'
+				{list:'设备管理'},
+				{buy:'购买'},
+				{user:'个人中心'},
+				{signout:'退出'}
 			]
 		}
 	}
 	
 	render () {
 		return (
-			<div style={styles.container}>
-				<div style={styles.tabNav}>
-					<div>
-						<h1 style={styles.tabNavTitle}>{placeholder.cloudConqtrolText}</h1>
+			<div>
+				<div style={styles.container}>
+					<div style={styles.tabNav}>
+						<div>
+							<h1 style={styles.tabNavTitle}>{placeholder.cloudConqtrolText}</h1>
+						</div>
+						<nav>
+							{this._renderNavItem()}
+						</nav>
 					</div>
-					<nav>
-						{this._renderNavItem()}
-					</nav>
 				</div>
+				{this.props.children}
 			</div>
+			
 		)
 	}
 	
 	_renderNavItem () {
 		return	this.state.navList.map((item, index) => {
 			return (
-				<span style={styles.tabNavItem} key={index}>{item}</span>
+				<Link to={'/home/' + Object.keys(item)[0]} style={styles.tabNavItem} key={index}>{item[Object.keys(item)[0]]}</Link>
 			)
 		})
 	}

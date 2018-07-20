@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
+import { HomeTitle } from '../components';
+import * as placeholder from '../constants/placeholder';
+import { HomeStyle }from '../style/HomeStyle';
+
 export default class  extends Component {
 	
 	constructor (props) {
@@ -56,7 +60,8 @@ export default class  extends Component {
 	
 	render () {
 		return (
-			<div>
+			<div style={HomeStyle.container}>
+				<HomeTitle title={placeholder.homeTitleText} />
 				{this._renderListTitle()}
 				{this._renderListItem()}
 			</div>
@@ -84,7 +89,6 @@ export default class  extends Component {
 			<div style={styles.listTitle}>
 				{
 					this.state.listTitle.map((item, index) => {
-						console.log(item, index)
 						return (
 							<span style={Object.assign({}, styles[Object.keys(item)[0]], styles.center)} key={index}>{item[Object.keys(item)[0]]}</span>
 						)
