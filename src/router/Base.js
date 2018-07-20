@@ -4,9 +4,9 @@ import {
   Route,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { List, TabNav } from '../components';
 
 import {
+  Home,
   SingIn,
   SingUp,
 	ForgotPassword
@@ -17,13 +17,7 @@ class Base extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Route path='/home' render={() => {
-            return (
-              <TabNav>
-                <Route path='/home/list' component={List}/>
-              </TabNav>
-            )
-          }}/>
+          <Route path='/home' component={Home}/>
           <Route exact path='/singin' component={SingIn} />
           <Route exact path='/singup' component={SingUp} />
           <Route exact path='/password' component={ForgotPassword} />

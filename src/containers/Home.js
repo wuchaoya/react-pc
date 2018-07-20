@@ -1,9 +1,11 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Route,} from 'react-router-dom';
 
 import * as actions from '../actions/actions';
 import { TabNav, } from '../components';
+import { List } from '../components';
 
 
 
@@ -15,7 +17,9 @@ class Home extends Component {
 	}
 	render () {
 		return (
-				<TabNav/>
+			<TabNav>
+				<Route path='/home/list' component={List}/>
+			</TabNav>
 		)
 	}
 	
