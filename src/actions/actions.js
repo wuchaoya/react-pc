@@ -26,6 +26,14 @@ export function setTimeData (data, name) {
 	};
 }
 
+export function setTabName (data, name) {
+	return {
+		type: actionTypes.SETTIMEDATA,
+		data: data,
+		name: name
+	};
+}
+
 
 export const getStateData = state => {
 	return {

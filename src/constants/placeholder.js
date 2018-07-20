@@ -12,3 +12,4 @@ export const signUpTitleText = '注册';
 export const signUpSubTitleText = '已有账号,立即登录';
 export const cloudConqtrolText = '爱云兔云手机群控制平台';
 export const homeTitleText = '订单详情';
+export const homeBuyText = '云手机设备购买';

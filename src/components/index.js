@@ -9,6 +9,8 @@ export {default as VerificationCode} from './VerificationCode';
 export {default as TabNav} from './TabNav';
 export {default as HomeTitle} from './HomeTitle';
 export {default as List} from './List';
+export {default as BuyTabNav} from './BuyTabNav';
+
 
 
 
