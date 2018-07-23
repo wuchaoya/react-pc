@@ -3,11 +3,12 @@
  */
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import {Route,} from 'react-router-dom';
 
 import * as actions from '../actions/actions';
-import { BuyTabNav, HomeTitle} from '../components';
+import { BuyTabNav, HomeTitle, PackageList } from '../components';
 import * as placeholder from '../constants/placeholder';
-import { HomeStyle } from '../style/HomeStyle'
+import { HomeStyle } from '../style/HomeStyle';
 
 class HomeBuy  extends Component {
 	
@@ -20,7 +21,9 @@ class HomeBuy  extends Component {
 		return (
 			<div style={HomeStyle.container}>
 				<HomeTitle title={placeholder.homeBuyText}/>
-				<BuyTabNav history={this.props.history}  />
+				<BuyTabNav history={this.props.history}>
+					<Route path='/home/buy' component={PackageList}/>
+				</BuyTabNav>
 			</div>
 		)
 	}

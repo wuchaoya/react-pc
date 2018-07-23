@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import {Route,} from 'react-router-dom';
 
 import * as actions from '../actions/actions';
-import {TabNav, List, } from '../components';
-import { HomeBuy } from '../containers';
+import {TabNav, } from '../components';
+import { HomeBuy, PersonalCenter, DeviceManagement } from '../containers';
 
 
 class Home extends Component {
@@ -17,8 +17,9 @@ class Home extends Component {
 	render () {
 		return (
 			<TabNav>
-				<Route path='/home/list' component={List}/>
+				<Route path='/home/list' component={DeviceManagement}/>
 				<Route path='/home/buy' component={HomeBuy}/>
+				<Route path='/home/user' component={PersonalCenter}/>
 			</TabNav>
 		)
 	}

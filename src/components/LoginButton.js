@@ -20,7 +20,7 @@ export default class LoginButton extends Component {
 		const { name , margin} = this.props;
 		return (
 			<div onClick={this.props.onclick} style={margin ? margin : {}}>
-				<div style={this._renderStyle()} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>
+				<div style={Object.assign({}, this._renderStyle(), this.props.style? this.props.style : {} )} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>
 					<span>{name}</span>
 				</div>
 			</div>
@@ -79,10 +79,12 @@ const styles = {
 	},
 	buttonOrangeHover: {
 		backgroundColor: '#f0643c',
-		color: '#fff'
+		color: '#fff',
+		border: '1px solid #fc8056'
 	},
 	buttonWhiteHover: {
 		backgroundColor: '#fc8056',
-		color: '#fff'
+		color: '#fff',
+		border: '1px solid #fc8056'
 	}
 }

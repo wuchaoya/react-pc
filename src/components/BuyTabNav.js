@@ -24,8 +24,11 @@ import { vipImg, vipHoverImg, gvipImg, gvipHoverImg } from '../constants/images'
 	
 	render () {
 		return (
-				<div style={style.content}>
-					{this._renderTabItem()}
+				<div>
+					<div style={style.content}>
+						{this._renderTabItem()}
+					</div>
+					{this.props.children}
 				</div>
 		)
 	}
@@ -90,6 +93,9 @@ const style = {
 	},
 	content: {
 		width: '1100px',
-		display: 'flex'
+		display: 'flex',
+		paddingBottom: '36px',
+		borderBottom: '1px solid #eee',
+		marginBottom: '36px'
 	}
 }
