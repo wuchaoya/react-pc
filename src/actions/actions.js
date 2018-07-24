@@ -34,6 +34,12 @@ export function setTabName (data, name) {
 	};
 }
 
+export function setFingerprint (string) {
+	return {
+		type: actionTypes.SETFINGERPRINT,
+		text: string
+	};
+}
 
 export const getStateData = state => {
 	return {

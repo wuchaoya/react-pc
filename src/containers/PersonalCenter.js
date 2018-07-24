@@ -15,7 +15,7 @@ export default class PersonalCenter  extends Component {
 	
 	render () {
 		return (
-			<div>
+			<div style={{width: '100%'}}>
 				<UserTabNav  history={this.props.history}>
 					<Route path='/home/user/list' component={List}/>
 					<Route path='/home/user/passworld' component={ModifyPassword}/>

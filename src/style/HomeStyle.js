@@ -4,6 +4,7 @@ export const HomeStyle = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		display: 'flex',
-		flexDirection: 'column'
+		flexDirection: 'column',
+		flex: '1'
 	}
 }

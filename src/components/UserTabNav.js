@@ -37,11 +37,13 @@ export default class UserTabNav  extends Component {
 	
 	render () {
 		return (
-			<div>
+			<div style={styles.center}>
 				<nav style={styles.nav}>
 					{this._render()}
 				</nav>
-				{this.props.children}
+				<div style={styles.children}>
+					{this.props.children}
+				</div>
 			</div>
 		)
 	}
@@ -77,7 +79,8 @@ const styles = {
 		height: '54px',
 		display: 'flex',
 		justifyContent: 'flex-end',
-		alignItems: 'center'
+		alignItems: 'center',
+		borderTop: '1px solid #eee',
 	},
 	text: {
 		fontSize: '14px',
@@ -93,5 +96,22 @@ const styles = {
 	},
 	hover: {
 		color: '#fc8056'
+	},
+	center: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		flexDirection: 'column',
+		background: '#fff',
+		width: '100%'
+	},
+	children: {
+		background: '#fafafa',
+		width: '100%',
+		padding: '24px',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		flexDirection: 'column',
 	}
 }

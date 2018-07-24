@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import { HomeTitle } from '../components';
-import * as placeholder from '../constants/placeholder';
 import { HomeStyle }from '../style/HomeStyle';
 
 export default class  extends Component {
@@ -39,8 +37,8 @@ export default class  extends Component {
 					Price: '¥5.00',
 					number: '100',
 					actualPrice: '¥666.00',
-					tradingResults: '0',
-					deploymentResults: '0',
+					tradingResults: '1',
+					deploymentResults: '1',
 					action: '查看详情'
 				},
 				{
@@ -50,8 +48,8 @@ export default class  extends Component {
 					Price: '¥5.00',
 					number: '100',
 					actualPrice: '¥666.00',
-					tradingResults: '0',
-					deploymentResults: '0',
+					tradingResults: '2',
+					deploymentResults: '2',
 					action: '查看详情'
 				}
 			]
@@ -61,7 +59,6 @@ export default class  extends Component {
 	render () {
 		return (
 			<div style={HomeStyle.container}>
-				<HomeTitle title={placeholder.homeTitleText} />
 				{this._renderListTitle()}
 				{this._renderListItem()}
 			</div>
@@ -74,8 +71,9 @@ export default class  extends Component {
 				<div key={key} style={styles.listItem}>
 					{
 						Object.keys(object).map((item, index) => {
+							let data = this._renderData(object[item], item, object[item])
 							return (
-								<span style={Object.assign({}, styles[item], styles.center)} key={index}>{object[item]}</span>
+								<span style={Object.assign({}, styles[item], data.style)} key={index}>{data.text}</span>
 							)
 						})
 					}
@@ -96,6 +94,38 @@ export default class  extends Component {
 				}
 			</div>
 		)
+	}
+	
+	_renderData (type,name, value ) {
+		if (name === 'action') {
+			return {
+				style : Object.assign({},  {color: '#fc8056'}, styles.center),
+				text: '查看详情'
+			}
+		}
+		if (name === 'tradingResults' || name === 'deploymentResults') {
+			switch (Number(type)) {
+				case 0:
+					return {
+						style: Object.assign({}, {color: '#08cc06'}, styles.center),
+						text: name === 'tradingResults' ? '交易成功' : '已全部部署'
+					}
+				case 1:
+					return {
+						style: Object.assign({},  {color: '#d82e2e'}, styles.center),
+						text: name === 'tradingResults' ? '交易失败' : '部分部署失败'
+					}
+				default:
+					return {
+						style: Object.assign({},  {color: '#C8C8C8'}, styles.center),
+						text: name === 'tradingResults' ? '等待交易中' : '等待部署中'
+					}
+			}
+		}
+		return {
+			style: styles.center,
+			text: value
+		}
 	}
 }
 
@@ -151,6 +181,7 @@ const styles = {
 	center: {
 		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'center'
-	}
+		justifyContent: 'center',
+	},
+	
 }
