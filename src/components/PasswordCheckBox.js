@@ -2,10 +2,13 @@
  * 记住密码 && 忘记密码
  */
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from '../actions/actions';
 
 import * as Hover from '../utils/Hover';
 
-export default class PasswordCheckBox  extends Component {
+class PasswordCheckBox  extends Component {
 	
 	constructor (props) {
 		super(props)
@@ -17,11 +20,12 @@ export default class PasswordCheckBox  extends Component {
 	}
 	
 	render () {
+		console.log(this.props)
 		let { margin, onclickForgotPassword } = this.props;
 		return (
 			<div style={Object.assign({}, styles.container, margin)}>
 				<div>
-					<input type='checkbox' style={styles.checkbox} />
+					<input onClick={() => this.setCheckedState()} checked={this.props.stateData.checkedPassWord} type='checkbox' style={styles.checkbox} />
 					记住密码
 				</div>
 				<div onClick={onclickForgotPassword} style={this._renderStyle()} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>忘记密码</div>
@@ -35,7 +39,12 @@ export default class PasswordCheckBox  extends Component {
 		}
 		return styles.text
 	}
+	setCheckedState () {
+		this.props.setRememberPasswordState(!this.props.stateData.checkedPassWord)
+	}
 }
+
+export default connect(actions.getStateData, actions)(PasswordCheckBox);
 
 const styles = {
 	checkbox: {

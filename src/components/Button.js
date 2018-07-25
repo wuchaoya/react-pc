@@ -19,7 +19,7 @@ export default class Button extends Component {
 	render () {
 		const { name , margin} = this.props;
 		return (
-			<div onClick={this.props.onclick} style={margin ? margin : {}}>
+			<div onClick={this.props.onClick} style={margin ? margin : {}}>
 				<div style={Object.assign({}, this._renderStyle(), this.props.style? this.props.style : {} )} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>
 					<span>{name}</span>
 				</div>

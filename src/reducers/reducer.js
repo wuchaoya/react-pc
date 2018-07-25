@@ -12,7 +12,9 @@ let initialState = {
 	vip: {
 		name: 'vip'
 	},
-	fingerprint: ''
+	fingerprint: '',
+	checkedPassWord: false
+	
 };
 
 export default function update (state = initialState, action) {
@@ -24,8 +26,9 @@ export default function update (state = initialState, action) {
 	  case actionTypes.SETTABNAME:
 		  return Object.assign({}, state, action.name)
 		case actionTypes.SETFINGERPRINT:
-			console.log(action.text)
 			return Object.assign({}, state, {fingerprint: action.text})
+		case actionTypes.SETREMEMBERPASSWORDSTATE:
+			return Object.assign({}, state, {checkedPassWord: action.state})
     default:
       return state;
   }

@@ -18,6 +18,13 @@ export function setHomeData (data, state) {
 	};
 }
 
+
+/**
+ * 倒计时
+ * @param data
+ * @param name
+ * @returns {{type, data: *, name: *}}
+ */
 export function setTimeData (data, name) {
 	return {
 		type: actionTypes.SETTIMEDATA,
@@ -26,6 +33,12 @@ export function setTimeData (data, name) {
 	};
 }
 
+/**
+ * 购买页面当前vip/gvip
+ * @param data
+ * @param name
+ * @returns {{type, data: *, name: *}}
+ */
 export function setTabName (data, name) {
 	return {
 		type: actionTypes.SETTIMEDATA,
@@ -34,6 +47,11 @@ export function setTabName (data, name) {
 	};
 }
 
+/**
+ * 浏览器签名
+ * @param string
+ * @returns {{type, string}}
+ */
 export function setFingerprint (string) {
 	return {
 		type: actionTypes.SETFINGERPRINT,
@@ -41,6 +59,24 @@ export function setFingerprint (string) {
 	};
 }
 
+/**
+ *  记住密码状态
+ * @param boolean
+ * @returns {{type, boolean}}
+ */
+export function setRememberPasswordState (state) {
+		window.localStorage.setItem('rememberPasswordState', state)
+	return {
+		type: actionTypes.SETREMEMBERPASSWORDSTATE,
+		state: state
+	};
+}
+
+/**
+ * 获取stateData
+ * @param state
+ * @returns {{stateData}}
+ */
 export const getStateData = state => {
 	return {
 		stateData: state.update

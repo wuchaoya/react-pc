@@ -18,7 +18,7 @@ export default class LoginInput extends Component {
 		const { type, placeholder } = this.props;
 		return (
 			<div>
-				<input name={this.props.name} ref={this.props.name} style={styles.input} type={type} placeholder={placeholder} />
+				<input value={this.props.value} onChange={this.props.onChange} name={this.props.name} ref={this.props.name} style={styles.input} type={type} placeholder={placeholder} />
 			</div>
 		)
 	}
