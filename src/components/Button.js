@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 
 import * as Hover from '../utils/Hover';
 
-export default class LoginButton extends Component {
+export default class Button extends Component {
 	constructor (props) {
 		super(props)
 		this.state = {

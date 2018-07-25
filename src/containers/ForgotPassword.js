@@ -8,7 +8,7 @@ import * as actions from '../actions/actions';
 import * as placeholder from '../constants/placeholder';
 import { loginStyle } from '../style/LoginStyle';
 import {
-	LoginButton, LoginInput, InputView, Title,VerificationCode
+	Button, LoginInput, InputView, Title,VerificationCode
 } from '../components';
 
 
@@ -27,7 +27,7 @@ class ForgotPassword  extends Component {
 				<VerificationCode  data={this.props} name='passwoldCode' />
 				<LoginInput type='passworld' placeholder={placeholder.passText} />
 				<LoginInput type='passworld' placeholder={placeholder.againPasswordText} />
-				<LoginButton margin={loginStyle.topButton} name={placeholder.forgotPasswordButtonText} type='1' />
+				<Button margin={loginStyle.topButton} name={placeholder.forgotPasswordButtonText} type='1' />
 			</div>
 		)
 	}

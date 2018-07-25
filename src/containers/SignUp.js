@@ -9,7 +9,7 @@ import * as placeholder from '../constants/placeholder';
 import { loginStyle } from '../style/LoginStyle';
 import * as HistoryPush from '../utils/HistoryPush';
 import {
-	LoginButton, LoginInput, InputView, Title, VerificationCode
+	Button, LoginInput, InputView, Title, VerificationCode
 } from '../components';
 
 
@@ -29,7 +29,7 @@ class SignUp  extends Component {
 				<VerificationCode  data={this.props} name='signUpCode' />
 				<LoginInput type='passworld' placeholder={placeholder.passText} />
 				<LoginInput type='passworld' placeholder={placeholder.againPasswordText} />
-				<LoginButton margin={loginStyle.topButton} name={placeholder.sigupButtonText } type='2' />
+				<Button margin={loginStyle.topButton} name={placeholder.sigupButtonText } type='2' />
 			</div>
 		)
 	}

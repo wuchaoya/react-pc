@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { HomeTitle, LoginButton } from '../components';
+import { HomeTitle, Button } from '../components';
 
 export default class DeviceTitle extends Component {
 	
@@ -13,7 +13,7 @@ export default class DeviceTitle extends Component {
 		return (
 			<div style={styles.container}>
 				<HomeTitle title='云手机设备管理'/>
-				<LoginButton style={styles.button}  name='上传、管理文件' type='2' />
+				<Button style={styles.button}  name='上传、管理文件' type='2' />
 			</div>
 		)
 	}

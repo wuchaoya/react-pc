@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { LoginButton } from '../components';
+import { Button } from '../components';
 
 export default class DeviceActions  extends Component {
 	
@@ -12,12 +12,12 @@ export default class DeviceActions  extends Component {
 	render () {
 		return (
 			<div style={styles.container}>
-				<LoginButton style={styles.button}  name='重启云手机' type='2' />
-				<LoginButton style={styles.button}  name='恢复出厂设置' type='2' />
-				<LoginButton style={styles.button}  name='移动' type='2' />
-				<LoginButton style={styles.button}  name='远程安装' type='2' />
-				<LoginButton style={styles.button}  name='远程运行' type='2' />
-				<LoginButton style={styles.button}  name='续费' type='2' />
+				<Button style={styles.button}  name='重启云手机' type='2' />
+				<Button style={styles.button}  name='恢复出厂设置' type='2' />
+				<Button style={styles.button}  name='移动' type='2' />
+				<Button style={styles.button}  name='远程安装' type='2' />
+				<Button style={styles.button}  name='远程运行' type='2' />
+				<Button style={styles.button}  name='续费' type='2' />
 			</div>
 		)
 	}

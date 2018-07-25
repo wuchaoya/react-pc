@@ -10,7 +10,7 @@ import * as HistoryPush from '../utils/HistoryPush';
 import { loginStyle } from '../style/LoginStyle';
 import { styles} from '../style/ModifyPasswordStyle';
 import {
-	LoginButton, LoginInput, Title, VerificationCode
+	Button, LoginInput, Title, VerificationCode
 } from '../components';
 
 
@@ -31,7 +31,7 @@ class ModifyPassword  extends Component {
 				<VerificationCode  data={this.props} name='signUpCode' />
 				<LoginInput type='passworld' placeholder={placeholder.passText} />
 				<LoginInput type='passworld' placeholder={placeholder.againPasswordText} />
-				<LoginButton margin={loginStyle.topButton} name={placeholder.forgotPasswordButtonText } type='1' />
+				<Button margin={loginStyle.topButton} name={placeholder.forgotPasswordButtonText } type='1' />
 				</div>
 			</div>
 		)
