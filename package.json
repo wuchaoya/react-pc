@@ -24,5 +24,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/pro": {
+      "target": "http://cloud-phone-dev.xiaoyaoyou.com:2096/",
+      "changeOrigin": true,
+      "pathRewrite":{"^/pro":""}
+    }
   }
 }

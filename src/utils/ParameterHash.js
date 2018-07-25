@@ -1,12 +1,16 @@
+/**
+ *  签名
+ */
 import CryptoJS from 'crypto-js';
 
 export default class ParameterHash  {
 	
 	static  encrypt (parameter) {
 		let initParameter = {
+			clientType: 1,
+			mobile: '10086',
 			timestamp: (new Date()).getTime(),
 			channelId: '0001',
-			phoneNumber: '10086',
 		}
 		let mergeParameter = Object.assign({}, initParameter, parameter);
 		console.log(mergeParameter)

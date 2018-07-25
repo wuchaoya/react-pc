@@ -1,4 +1,3 @@
-import Encryption from './Encryption';
 let { fetch } = window;
 export default class HttpUitl {
   static Post (path, parameter, callbackSuccess, callbackError) {
@@ -8,7 +7,7 @@ export default class HttpUitl {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Sign': Encryption.encryptFun(JSON.stringify(parameter))
+        // 'Sign': Encryption.encryptFun(JSON.stringify(parameter))
       },
       body: JSON.stringify(parameter)
     }).then((response) => {
@@ -21,6 +20,7 @@ export default class HttpUitl {
   }
   static Get (path, callbackSuccess, callbackError) {
     fetch(path).then((response) => {
+      console.log(response)
       return response.json();
     }).then((responseJson) => {
       callbackSuccess(responseJson);
