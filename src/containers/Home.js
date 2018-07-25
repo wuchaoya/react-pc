@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Route,} from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import * as actions from '../actions/actions';
 import {TabNav, } from '../components';
@@ -21,24 +21,19 @@ class Home extends Component {
 			<TabNav>
 				<Route path='/home/list' component={DeviceManagement}/>
 				<Route path='/home/buy' component={HomeBuy}/>
+				<Route exact render={() => <Redirect to='/home/user/list'/>}  path='/home/user' />
 				<Route path='/home/user' component={PersonalCenter}/>
 			</TabNav>
 		)
 	}
 	componentWillMount () {
-		let _this = this
-		console.log(this.props)
-		new Fingerprint2().get((result) => {
-			_this.props.setFingerprint(result)
-			
-		})
+		new Fingerprint2().get((result) =>
+			this.props.setFingerprint(result)
+		)
 		
 	}
 	componentDidMount () {
-		let _this = this
-		setTimeout(() => {
-			ParameterHash.encrypt({fingerprint: _this.props.stateData.fingerprint})
-		},0)
+		setTimeout(() => ParameterHash.encrypt({fingerprint: this.props.stateData.fingerprint}),0)
 	}
 	
 }
