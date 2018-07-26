@@ -20,7 +20,6 @@ class PasswordCheckBox  extends Component {
 	}
 	
 	render () {
-		console.log(this.props)
 		let { margin, onclickForgotPassword } = this.props;
 		return (
 			<div style={Object.assign({}, styles.container, margin)}>

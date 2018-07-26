@@ -20,6 +20,10 @@ export {default as DeviceTitle} from './DeviceTitle';
 export {default as DeviceActions} from './DeviceActions';
 export {default as SelectNav} from './SelectNav';
 export {default as CloudPhone} from './CloudPhone';
+export {default as Layer} from './Layer';
+export {default as Modal} from './Modal';
+
+
 
 
 

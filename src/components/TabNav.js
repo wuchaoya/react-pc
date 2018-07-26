@@ -1,8 +1,9 @@
 /**
  * 导航
  */
+
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import * as placeholder from '../constants/placeholder';
 
@@ -22,13 +23,13 @@ export default class TabNav  extends Component {
 	
 	render () {
 		return (
-			<div>
+			<div style={styles.center}>
 				<div style={styles.container}>
 					<div style={styles.tabNav}>
 						<div>
 							<h1 style={styles.tabNavTitle}>{placeholder.cloudConqtrolText}</h1>
 						</div>
-						<nav>
+						<nav style={styles.nav}>
 							{this._renderNavItem()}
 						</nav>
 					</div>
@@ -43,7 +44,7 @@ export default class TabNav  extends Component {
 		return	this.state.navList.map((item, index) => {
 			let path = Object.keys(item)[0] === 'signout' ? '/singin' : '/home/' + Object.keys(item)[0];
 			return (
-				<Link to={path} style={styles.tabNavItem} key={index}>{item[Object.keys(item)[0]]}</Link>
+				<NavLink activeStyle={styles.selectTab} to={path} style={styles.tabNavItem}  key={index}>{item[Object.keys(item)[0]]}</NavLink>
 			)
 		})
 	}
@@ -55,7 +56,7 @@ const styles = {
 		height: '68px',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		width: '1101px'
+		width: '1101px',
 	},
 	tabNavTitle: {
 		fontSize: '24px',
@@ -63,12 +64,13 @@ const styles = {
 	},
 	tabNavItem: {
 		height: '68px',
-		width: '128px',
+		width: '108px',
+		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 		fontSize: '#16',
 		color: '#555',
-		marginRight: '128px'
+		marginLeft: '40px'
 	},
 	container: {
 		minWidth: '1366px',
@@ -76,5 +78,17 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		background: '#fff'
+	},
+	selectTab: {
+		borderTop: '3px solid #fc8056',
+		boxSizing: 'border-box'
+	},
+	nav: {
+		display: 'flex',
+		alignItems: 'center'
+	},
+	center: {
+		display: 'flex',
+		flexDirection: 'column'
 	}
 }

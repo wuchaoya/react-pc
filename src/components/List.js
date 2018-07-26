@@ -99,7 +99,7 @@ export default class  extends Component {
 	_renderData (type,name, value ) {
 		if (name === 'action') {
 			return {
-				style : Object.assign({},  {color: '#fc8056'}, styles.center),
+				style : Object.assign({},  {color: '#fc8056',cursor: 'pointer'}, styles.center),
 				text: '查看详情'
 			}
 		}

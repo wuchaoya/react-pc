@@ -5,6 +5,5 @@ export const HomeStyle = {
 		alignItems: 'center',
 		display: 'flex',
 		flexDirection: 'column',
-		flex: '1'
 	}
 }

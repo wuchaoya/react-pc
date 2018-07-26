@@ -177,3 +177,12 @@ textarea:-ms-input-placeholder {
     color: #c8c8c8!important;
 }
 
+html {
+    overflow: scroll;
+}
+body {
+    overflow: hidden;
+}
+html::-webkit-scrollbar {
+    display: none;
+}

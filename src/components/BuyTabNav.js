@@ -2,7 +2,7 @@
  * 购买导航
  */
 import React, {Component} from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import * as actions from '../actions/actions';
@@ -46,11 +46,11 @@ import { vipImg, vipHoverImg, gvipImg, gvipHoverImg } from '../constants/images'
 				depict = '能安装淘宝直播等应用';
 			}
 			return (
-				<NavLink exact onClick={() => this._onClick(item)}  key={index} style={style.tabItem} to={{path: '/home/buy/' + item, state: {name: item}}}>
+				<Link  onClick={() => this._onClick(item)}  key={index} style={style.tabItem} to={ '/home/buy/' + item}>
 					<img src={icon} alt={title} />
 					<span>{title}</span>
 					<span>{depict}</span>
-				</NavLink>
+				</Link>
 			)
 		})
 	}
@@ -97,5 +97,6 @@ const style = {
 		paddingBottom: '36px',
 		borderBottom: '1px solid #eee',
 		marginBottom: '36px'
-	}
+	},
+	
 }

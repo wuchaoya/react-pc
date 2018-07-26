@@ -41,7 +41,6 @@ class SignIn  extends Component {
 	}
 	
 	setValue (key) {
-		console.log(this.refs)
 		this.setState({
 			[key]: this.refs[key].refs[key].value
 		})
@@ -66,7 +65,6 @@ class SignIn  extends Component {
 			setRememberPasswordState(true)
 			let user = JSON.parse(window.localStorage.getItem('user'))
 			if (user !== null) {
-				console.log('设置密码')
 				this.setState({
 					userName: user.userName,
 					passWord: user.passWord

@@ -1,3 +1,6 @@
+/**
+ * 设备管理
+ */
 import React, {Component} from 'react';
 
 import { HomeStyle } from '../style/HomeStyle'

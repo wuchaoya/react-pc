@@ -18,7 +18,6 @@ const styles = {
 	title: {
 		fontSize: '20px',
 		color: '#222',
-		maxWidth: '1101px',
 		height: '78px',
 		display: 'flex',
 		alignItems: 'center'
