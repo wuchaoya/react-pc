@@ -8,6 +8,7 @@ import * as actions from '../actions/actions';
 import * as placeholder from '../constants/placeholder';
 import { loginStyle } from '../style/LoginStyle';
 import * as HistoryPush from '../utils/HistoryPush';
+import HttpRequest from '../utils/HttpRequest';
 import {
 	Button, LoginInput, InputView, Title, SubTitle, PasswordCheckBox
 } from '../components';
@@ -33,7 +34,7 @@ class SignIn  extends Component {
 				<SubTitle text={placeholder.subTitleText} margin={loginStyle.subTitleMargin} />
 				<LoginInput value={this.state.userName} onChange={() => this.setValue('userName')} ref='userName' name='userName' type='text' placeholder={placeholder.userText} />
 				<LoginInput value={this.state.passWord} onChange={() => this.setValue('passWord')} ref='passWord' name='passWord' type='password' placeholder={placeholder.passText} />
-				<PasswordCheckBox onclickForgotPassword={() => this.passwordHistoryPush()} margin={loginStyle.checkBox} />
+				<PasswordCheckBox  onclickForgotPassword={() => this.passwordHistoryPush()} margin={loginStyle.checkBox} />
 				<Button onClick={() => this.signIn()} margin={loginStyle.topButton} name={placeholder.siginButtonText} type='1' />
 				<Button onClick={() => this.singUpHistoryPush()} name={placeholder.sigupButtonText} type='2' />
 			</div>
@@ -53,9 +54,19 @@ class SignIn  extends Component {
 				userName: this.state.userName
 			}))
 		}
-		if (this.state.userName === '123' && this.state.passWord === '123') {
-			this.homeHistoryPush({})
-		}
+		HttpRequest.signin(
+			{
+			mobile: this.state.userName,
+			password: this.state.passWord
+			},
+			(res) => {
+				console.log(res);
+				this.homeHistoryPush()
+			},
+			(err) => {
+				console.log(err);
+			}
+		)
 	}
 	
 	detectionState () {

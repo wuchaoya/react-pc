@@ -27,7 +27,7 @@
   },
   "proxy": {
     "/pro": {
-      "target": "http://cloud-phone-dev.xiaoyaoyou.com:2096/",
+      "target": "http://172.16.50.253:8762",
       "changeOrigin": true,
       "pathRewrite":{"^/pro":""}
     }

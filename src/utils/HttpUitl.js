@@ -2,7 +2,7 @@ let { fetch } = window;
 export default class HttpUitl {
   static Post (path, parameter, callbackSuccess, callbackError) {
     parameter.time = (new Date()).valueOf();
-    fetch( path, {
+    fetch('/pro' + path, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -19,7 +19,7 @@ export default class HttpUitl {
     });
   }
   static Get (path, callbackSuccess, callbackError) {
-    fetch(path).then((response) => {
+    fetch('/pro' + path).then((response) => {
       console.log(response)
       return response.json();
     }).then((responseJson) => {

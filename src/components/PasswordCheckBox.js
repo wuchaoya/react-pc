@@ -13,7 +13,7 @@ class PasswordCheckBox  extends Component {
 	constructor (props) {
 		super(props)
 		this.state = {
-			hover: false
+			hover: false,
 		};
 		this._onHoverState = Hover._onHoverState.bind(this);
 		this._toggleHover = Hover._toggleHover.bind(this);
@@ -21,10 +21,11 @@ class PasswordCheckBox  extends Component {
 	
 	render () {
 		let { margin, onclickForgotPassword } = this.props;
+		let checkedPassWord = this.props.stateData.checkedPassWord
 		return (
 			<div style={Object.assign({}, styles.container, margin)}>
 				<div>
-					<input onClick={() => this.setCheckedState()} checked={this.props.stateData.checkedPassWord} type='checkbox' style={styles.checkbox} />
+					<input  onClick={() => this.setCheckedState()} checked={checkedPassWord} type='checkbox' style={styles.checkbox} />
 					记住密码
 				</div>
 				<div onClick={onclickForgotPassword} style={this._renderStyle()} onMouseEnter={() =>this._onHoverState()} onMouseLeave={() =>this._toggleHover()}>忘记密码</div>

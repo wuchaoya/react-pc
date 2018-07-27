@@ -19,7 +19,7 @@ export default class VerificationCode  extends Component {
 	render () {
 		return (
 			<div style={styles.constants}>
-				<LoginInput type='text' placeholder={placeholder.codeText} />
+				<LoginInput value={this.props.value} onChange={this.props.onChange} name={this.props.name} ref={this.props.name} type='text' placeholder={placeholder.codeText} />
 				<div onClick={() =>this.setTime()} style={Object.assign({}, styles.codeText, styles.codeTextInitColor)}>
 					{this.props.data.stateData[this.state.name].text}
 				</div>
@@ -56,6 +56,7 @@ export default class VerificationCode  extends Component {
 		if (this.props.data.stateData[this.state.name].state !== false) {
 			return
 		}
+		this.props.getCode()
 		let _this = this;
 		let time = 6;
 		_this.rememberTimeData(setTimeData, time--)

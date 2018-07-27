@@ -42,7 +42,7 @@ export default class TabNav  extends Component {
 	
 	_renderNavItem () {
 		return	this.state.navList.map((item, index) => {
-			let path = Object.keys(item)[0] === 'signout' ? '/singin' : '/home/' + Object.keys(item)[0];
+			let path = Object.keys(item)[0] === 'signout' ? '/signin' : '/home/' + Object.keys(item)[0];
 			return (
 				<NavLink activeStyle={styles.selectTab} to={path} style={styles.tabNavItem}  key={index}>{item[Object.keys(item)[0]]}</NavLink>
 			)

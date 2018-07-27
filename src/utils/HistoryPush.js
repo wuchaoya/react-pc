@@ -4,10 +4,10 @@ export function historyPush (path,data,_this) {
 }
 
 export function singinHistoryPush (data) {
-	historyPush('/singin', data, this)
+	historyPush('/signin', data, this)
 }
 export function singUpHistoryPush (data) {
-	historyPush('/singup',data, this)
+	historyPush('/signup',data, this)
 }
 export function homeHistoryPush (data) {
 	historyPush('/',data, this)

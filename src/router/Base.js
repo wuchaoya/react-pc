@@ -23,8 +23,8 @@ class Base extends Component {
         <div>
           <Route exact path='/' render={() => <Redirect to='/home/list'/>}/>
           <Route path='/home' component={Home}/>
-          <Route exact  path='/singin' component={SingIn} />
-          <Route exact path='/singup' component={SingUp} />
+          <Route exact  path='/signin' component={SingIn} />
+          <Route exact path='/signup' component={SingUp} />
           <Route exact path='/password' component={ForgotPassword} />
         </div>
       </BrowserRouter>
