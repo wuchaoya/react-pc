@@ -44,11 +44,11 @@ export default class HttpRequest {
 	
 	/**
 	 * 修改密码
-	 * mobile
-	 * token
-	 * password
-	 * newPassword
-	 * code
+	 * mobile 用户帐号
+	 * token 登陆token
+	 * password 用户密码
+	 * newPassword 用户新密码
+	 * code 验证码
 	 */
 	static modify () {
 		this.factory('/pub/user/modify', ...arguments)
