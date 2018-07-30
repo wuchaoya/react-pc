@@ -22,6 +22,8 @@ export {default as SelectNav} from './SelectNav';
 export {default as CloudPhone} from './CloudPhone';
 export {default as Layer} from './Layer';
 export {default as Modal} from './Modal';
+export {default as ErrorText} from './ErrorText';
+
 
 
 

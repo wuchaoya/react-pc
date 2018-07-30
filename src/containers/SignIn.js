@@ -10,8 +10,9 @@ import { loginStyle } from '../style/LoginStyle';
 import * as HistoryPush from '../utils/HistoryPush';
 import HttpRequest from '../utils/HttpRequest';
 import {
-	Button, LoginInput, InputView, Title, SubTitle, PasswordCheckBox
+	Button, LoginInput, InputView, Title, SubTitle, PasswordCheckBox, ErrorText
 } from '../components';
+import { passWordRE } from '../utils/RE';
 
 
 class SignIn  extends Component {
@@ -20,7 +21,8 @@ class SignIn  extends Component {
 		super(props)
 		this.state = {
 			passWord: '',
-			userName: ''
+			userName: '',
+			errText: '1'
 		};
 		this.singUpHistoryPush = HistoryPush.singUpHistoryPush.bind(this);
 		this.passwordHistoryPush = HistoryPush.passwordHistoryPush.bind(this);
@@ -33,9 +35,10 @@ class SignIn  extends Component {
 				<Title center text={placeholder.titleText} />
 				<SubTitle text={placeholder.subTitleText} margin={loginStyle.subTitleMargin} />
 				<LoginInput value={this.state.userName} onChange={() => this.setValue('userName')} ref='userName' name='userName' type='text' placeholder={placeholder.userText} />
-				<LoginInput value={this.state.passWord} onChange={() => this.setValue('passWord')} ref='passWord' name='passWord' type='password' placeholder={placeholder.passText} />
+				<LoginInput value={this.state.passWord} onChange={() => this.setValue('passWord')} ref='passWord' name='passWord' type='text' placeholder={placeholder.passText} />
 				<PasswordCheckBox  onclickForgotPassword={() => this.passwordHistoryPush()} margin={loginStyle.checkBox} />
-				<Button onClick={() => this.signIn()} margin={loginStyle.topButton} name={placeholder.siginButtonText} type='1' />
+				<ErrorText text={this.state.errText}/>
+				<Button onClick={() => this.signIn()} margin={this.state.errText === '' ? loginStyle.topButton : loginStyle.showTextMargin} name={placeholder.siginButtonText} type='1' />
 				<Button onClick={() => this.singUpHistoryPush()} name={placeholder.sigupButtonText} type='2' />
 			</div>
 		)
@@ -44,6 +47,8 @@ class SignIn  extends Component {
 	setValue (key) {
 		this.setState({
 			[key]: this.refs[key].refs[key].value
+		}, () => {
+			console.log(passWordRE.test(this.state.passWord))
 		})
 	}
 	

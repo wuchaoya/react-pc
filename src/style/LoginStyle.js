@@ -10,5 +10,9 @@ export const loginStyle = {
 	},
 	checkBox: {
 		marginTop: '18px'
+	},
+	showTextMargin : {
+		marginTop: '16px',
+		marginBottom: '12px'
 	}
 }

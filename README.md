@@ -123,3 +123,15 @@ yarn build
 5. 项目部署地址 172.16.2.223:/data/work/group-control/gc-web/
 6. root 用户 ssh -p 2299 root@172.16.2.223
 
+
+### nginx 配置
+
+```
+location / {
+              try_files $uri @fallback;
+           }
+location @fallback 
+        {
+         rewrite .* /index.html break;
+        }
+```
