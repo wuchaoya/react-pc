@@ -7,6 +7,9 @@ export default class HttpRequest {
 			(response) => {
 				if (response.code === 10000) {
 					callbackSuccess(response)
+					const error = new Error(response);
+					error.response = response;
+					throw error;
 				}
 			},
 			(error) => {

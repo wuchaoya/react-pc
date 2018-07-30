@@ -12,7 +12,7 @@ import HttpRequest from '../utils/HttpRequest';
 import {
 	Button, LoginInput, InputView, Title, SubTitle, PasswordCheckBox, ErrorText
 } from '../components';
-import { passWordRE } from '../utils/RE';
+import { passWordRE, mobileRE } from '../utils/RE';
 
 
 class SignIn  extends Component {
@@ -22,7 +22,7 @@ class SignIn  extends Component {
 		this.state = {
 			passWord: '',
 			userName: '',
-			errText: '1'
+			errText: ''
 		};
 		this.singUpHistoryPush = HistoryPush.singUpHistoryPush.bind(this);
 		this.passwordHistoryPush = HistoryPush.passwordHistoryPush.bind(this);
@@ -38,7 +38,7 @@ class SignIn  extends Component {
 				<LoginInput value={this.state.passWord} onChange={() => this.setValue('passWord')} ref='passWord' name='passWord' type='text' placeholder={placeholder.passText} />
 				<PasswordCheckBox  onclickForgotPassword={() => this.passwordHistoryPush()} margin={loginStyle.checkBox} />
 				<ErrorText text={this.state.errText}/>
-				<Button onClick={() => this.signIn()} margin={this.state.errText === '' ? loginStyle.topButton : loginStyle.showTextMargin} name={placeholder.siginButtonText} type='1' />
+				<Button onClick={() => this.inputValidation()} margin={this.state.errText === '' ? loginStyle.topButton : loginStyle.showTextMargin} name={placeholder.siginButtonText} type='1' />
 				<Button onClick={() => this.singUpHistoryPush()} name={placeholder.sigupButtonText} type='2' />
 			</div>
 		)
@@ -72,6 +72,31 @@ class SignIn  extends Component {
 				console.log(err);
 			}
 		)
+	}
+	
+	inputValidation () {
+		if (process.env.NODE_ENV === 'development' && this.state.passWord === '123456') {
+			// 仅供开发环境使用
+			this.signIn()
+			return
+		}
+		if (!mobileRE.test(this.state.userName)) {
+			this.setText('请输入正确手机号')
+			return
+		} this.setText('')
+		if (!passWordRE.test(this.state.passWord)) {
+			this.setText('请输入8~12位前后不带空格的大写小写字母和数字')
+			return
+		} else {
+			this.setText('')
+			this.signIn()
+		}
+	}
+	
+	setText (text) {
+		  this.setState({
+			errText: text
+		})
 	}
 	
 	detectionState () {

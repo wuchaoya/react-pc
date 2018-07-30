@@ -17,7 +17,7 @@ export default class ErrorText  extends Component {
 const styles = {
 	text: {
 		marginTop: '8px',
-		fontSize: '12',
-		color: '#d82e2e'
+		fontSize: '12px',
+		color: '#d82e2e',
 	}
 }
