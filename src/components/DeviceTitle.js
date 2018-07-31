@@ -13,7 +13,7 @@ export default class DeviceTitle extends Component {
 		return (
 			<div style={styles.container}>
 				<HomeTitle title='云手机设备管理'/>
-				<Button style={styles.button}  name='上传、管理文件' type='2' />
+				<Button onClick={this.props.onClick} style={styles.button}  name='上传、管理文件' type='2' />
 			</div>
 		)
 	}

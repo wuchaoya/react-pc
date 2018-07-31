@@ -58,6 +58,8 @@ class SignIn  extends Component {
 				passWord: this.state.passWord,
 				userName: this.state.userName
 			}))
+		} else {
+			window.localStorage.removeItem('user')
 		}
 		HttpRequest.signin(
 			{
@@ -69,7 +71,7 @@ class SignIn  extends Component {
 				this.homeHistoryPush()
 			},
 			(err) => {
-				console.log(err);
+				this.setText(err.msg || '失败')
 			}
 		)
 	}

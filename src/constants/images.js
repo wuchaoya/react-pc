@@ -11,3 +11,4 @@ export const orderImg = require('../static/order.png');
 export const orderHoverImg =require('../static/order-hover.png');
 export const passWoldImg = require('../static/passwold.png');
 export const passWoldHoverImg = require('../static/passwold-hover.png');
+export const closeImg = require('../static/close.png');

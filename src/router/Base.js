@@ -14,6 +14,7 @@ import {
   SingIn,
   SingUp,
 	ForgotPassword,
+  Test
 } from '../containers';
 
 class Base extends Component {
@@ -26,6 +27,7 @@ class Base extends Component {
           <Route exact  path='/signin' component={SingIn} />
           <Route exact path='/signup' component={SingUp} />
           <Route exact path='/password' component={ForgotPassword} />
+          <Route exact path='/test' component={Test} />
         </div>
       </BrowserRouter>
     );

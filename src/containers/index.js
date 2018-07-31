@@ -7,6 +7,8 @@ export {default as ForgotPassword} from './ForgotPassword';
 export {default as HomeBuy} from './HomeBuy';
 export {default as PersonalCenter} from './PersonalCenter';
 export {default as DeviceManagement} from './DeviceManagement';
+export {default as Test} from './Test';
+
 
 
 

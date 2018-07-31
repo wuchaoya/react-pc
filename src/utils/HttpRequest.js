@@ -5,12 +5,14 @@ export default class HttpRequest {
 	static factory (path,parameter, callbackSuccess, callbackError) {
 		HttpUitl.Post(path, parameter,
 			(response) => {
+			console.log(response)
 				if (response.code === 10000) {
 					callbackSuccess(response)
-					const error = new Error(response);
-					error.response = response;
-					throw error;
+					return
 				}
+				const error = new Error(response);
+				error.response = response;
+				throw error;
 			},
 			(error) => {
 				callbackError(error);

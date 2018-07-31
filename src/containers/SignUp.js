@@ -56,6 +56,7 @@ class SignUp  extends Component {
 			},
 			(res) => {
 				console.log(res);
+				this.singinHistoryPush()
 			},
 			(err) => {
 				console.log(err);
@@ -77,7 +78,7 @@ class SignUp  extends Component {
 				console.log(res);
 			},
 			(err) => {
-				console.log(err);
+				this.setText(err.result)
 			}
 		)
 	}

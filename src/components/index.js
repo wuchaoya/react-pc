@@ -23,6 +23,12 @@ export {default as CloudPhone} from './CloudPhone';
 export {default as Layer} from './Layer';
 export {default as Modal} from './Modal';
 export {default as ErrorText} from './ErrorText';
+export {default as FileList} from './FileList';
+export {default as UploadRecord} from './UploadRecord';
+export {default as Upload} from './Upload';
+
+
+
 
 
 

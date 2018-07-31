@@ -4,21 +4,24 @@
 import React, {Component} from 'react';
 
 import { HomeStyle } from '../style/HomeStyle'
+import { DeviceTitle, SelectNav, CloudPhone, FileList } from '../components';
 
-import { DeviceTitle, SelectNav, CloudPhone } from '../components';
 export default class DeviceManagement  extends Component {
 	
 	constructor (props) {
 		super(props)
-		this.state = {}
+		this.state = {
+			showFileList: false
+		}
 	}
 	
 	render () {
 		return (
 			<div style={HomeStyle.container}>
-				<DeviceTitle/>
+				<DeviceTitle onClick={() => this.setState({showFileList: true})} />
 				<SelectNav/>
 				<CloudPhone/>
+				<FileList close={() => this.setState({showFileList: false})} state={this.state.showFileList}/>
 			</div>
 		)
 	}
