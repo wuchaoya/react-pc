@@ -1,4 +1,9 @@
+/**
+ * 云手机
+ */
 import React, {Component} from 'react';
+
+import { DeviceActions,  Grouping, Reset } from '../components';
 
 export default class CloudPhone  extends Component {
 	
@@ -42,17 +47,36 @@ export default class CloudPhone  extends Component {
 					time: '24天16小时',
 					img: ''
 				}
-			]
+			],
+			showGrouping: false,
+			showReset: false
 		}
 	}
 	
 	render () {
 		return (
-			<div style={styles.deviceBox}>
-				{this._render()}
+			<div>
+				<DeviceActions reset={() =>this.show('showReset')}
+				               move={() => this.show('showGrouping')}
+				/>
+				<div style={styles.deviceBox}>
+					{this._render()}
+				</div>
+				<Grouping state={this.state.showGrouping} close={() => this.close('showGrouping')}/>
+				<Reset buttonName={{left: '立即重启', right: '取消'}} title='重启云手机' state={this.state.showReset} close={() => this.close('showReset')}/>
 			</div>
+			
 		)
 	}
+	
+	close (key) {
+		this.setState({[key]: false})
+	}
+	
+	show (key) {
+		this.setState({[key]: true})
+	}
+	
 	_render () {
 		return this.state.list.map((item, index) => {
 			return (
@@ -68,6 +92,7 @@ export default class CloudPhone  extends Component {
 			)
 		})
 	}
+	
 }
 
 const styles = {

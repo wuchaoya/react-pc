@@ -88,7 +88,7 @@ class ForgotPassword  extends Component {
 			return
 		}
 		this.setText('')
-		if (!codeRE.test(this.state.signUpCode)) {
+		if (!codeRE.test(Number(this.state.passwoldCode))) {
 			this.setText('验证码输入有误')
 			return
 		}

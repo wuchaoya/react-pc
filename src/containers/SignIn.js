@@ -61,6 +61,7 @@ class SignIn  extends Component {
 		} else {
 			window.localStorage.removeItem('user')
 		}
+		window.localStorage.setItem('headerData', JSON.stringify({mobile: this.state.userName}))
 		HttpRequest.signin(
 			{
 			mobile: this.state.userName,

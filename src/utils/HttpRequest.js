@@ -1,23 +1,50 @@
 import HttpUitl from './HttpUitl';
+import Fingerprint2 from 'fingerprintjs2';
+import ParameterHash from '../utils/ParameterHash';
 
 export default class HttpRequest {
 	
-	static factory (path,parameter, callbackSuccess, callbackError) {
-		HttpUitl.Post(path, parameter,
-			(response) => {
-			console.log(response)
-				if (response.code === 10000) {
-					callbackSuccess(response)
-					return
+	static factory (path, parameter, callbackSuccess, callbackError) {
+		
+		new Fingerprint2().get((result) => {
+				let time = (new Date()).valueOf();
+				let data = JSON.parse(window.localStorage.getItem('headerData'))
+				let signData = {
+					clientType: 1,
+					mobile: data.mobile,
+					clientId: result,
+					timestamp: time
 				}
-				const error = new Error(response);
-				error.response = response;
-				throw error;
-			},
-			(error) => {
-				callbackError(error);
-			});
+				let headerData= {
+					'Accept': 'application/json',
+					'Content-Type': 'application/x-www-form-urlencoded',
+					'clientType': 1,
+					'mobile': data.mobile,
+					'clientId': result,
+					'timestamp': time ,
+					'Sign': ParameterHash.encrypt(parameter,signData)
+				}
+				let pathRE = /^api$/
+				pathRE.test(path) === false || (headerData.authInfo = data.authInfo)
+				HttpUitl.Post(path, parameter, headerData,
+					(response) => {
+						console.log(response)
+						if (response.code === 10000) {
+							callbackSuccess(response)
+							return
+						}
+						const error = new Error(response);
+						error.response = response;
+						throw error;
+					},
+					(error) => {
+						callbackError(error);
+					});
+			}
+		)
 	}
+	
+
 	
 	/**
 	 * 登录

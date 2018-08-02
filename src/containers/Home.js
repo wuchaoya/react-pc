@@ -8,8 +8,7 @@ import { Route, Redirect } from 'react-router-dom';
 import * as actions from '../actions/actions';
 import {TabNav, } from '../components';
 import { HomeBuy, PersonalCenter, DeviceManagement } from '../containers';
-import ParameterHash from '../utils/ParameterHash';
-import Fingerprint2 from 'fingerprintjs2';
+
 
 
 class Home extends Component {
@@ -29,13 +28,11 @@ class Home extends Component {
 		)
 	}
 	componentWillMount () {
-		new Fingerprint2().get((result) =>
-			this.props.setFingerprint(result)
-		)
+	
 		
 	}
 	componentDidMount () {
-		setTimeout(() => ParameterHash.encrypt({fingerprint: this.props.stateData.fingerprint}),0)
+	
 	}
 	
 }

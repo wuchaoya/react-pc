@@ -12,3 +12,7 @@ export const orderHoverImg =require('../static/order-hover.png');
 export const passWoldImg = require('../static/passwold.png');
 export const passWoldHoverImg = require('../static/passwold-hover.png');
 export const closeImg = require('../static/close.png');
+export const selectNavImg = require('../static/select-nav-icon.png');
+export const selectRenameImg = require('../static/select-rename.png');
+export const selectStateImg = require('../static/select-state.png');
+

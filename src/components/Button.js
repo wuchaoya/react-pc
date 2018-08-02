@@ -42,17 +42,6 @@ export default class Button extends Component {
 		}
 	}
 	
-	_onHoverState () {
-		this.setState({
-			hover: true
-		})
-	}
-	
-	_toggleHover (){
-		this.setState({
-			hover: false
-		})
-	}
 }
 
 

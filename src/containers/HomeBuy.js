@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {Route,} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import * as actions from '../actions/actions';
 import { BuyTabNav, HomeTitle, PackageList, Modal } from '../components';
@@ -15,7 +15,7 @@ class HomeBuy  extends Component {
 	constructor (props) {
 		super(props)
 		this.state = {
-			showModal: true
+			showModal: false
 		}
 	}
 	
