@@ -28,7 +28,7 @@
   },
   "proxy": {
     "/pro": {
-      "target": "http://172.16.2.220:8762",
+      "target": "http://172.16.2.220:8760",
       "changeOrigin": true,
       "pathRewrite": {
         "^/pro": ""

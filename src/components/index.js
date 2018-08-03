@@ -28,9 +28,11 @@ export {default as UploadRecord} from './UploadRecord';
 export {default as Upload} from './Upload';
 export {default as SelectList} from './SelectList';
 export {default as SelectModal} from './SelectModal';
-export {default as Grouping} from './Grouping';
+export {default as ModalGrouping} from './ModalGrouping';
 export {default as CheckboxList} from './CheckboxList';
-export {default as Reset} from './Reset';
+export {default as ModalReset} from './ModalReset';
+export {default as ModalRenew} from './ModalRenew';
+
 
 
 

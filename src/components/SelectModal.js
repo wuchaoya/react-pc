@@ -18,8 +18,8 @@ export default (MyComponent) => {
 					<p style={styles.title}>{this.props.title}</p>
 					<MyComponent  {...this.props}/>
 					<div style={styles.buttonContainer}>
-						<div style={Object.assign({}, styles.button, styles.left)}>确定</div>
-						<div style={Object.assign({}, styles.button, styles.right)}>取消</div>
+						<div style={Object.assign({}, styles.button, styles.left)}>{this.props.buttonName.left}</div>
+						<div style={Object.assign({}, styles.button, styles.right)}>{this.props.buttonName.right}</div>
 					</div>
 					<img onClick={this.props.close} src={icon.closeImg} style={styles.close} alt='close' />
 				</div>
@@ -73,7 +73,7 @@ const styles = {
 	},
 	buttonContainer: {
 		display: 'flex',
-		marginTop: '50px'
+		marginTop: '30px'
 	},
 	
 }

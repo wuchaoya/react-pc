@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 
-import { DeviceActions,  Grouping, Reset } from '../components';
+import { DeviceActions,  ModalGrouping, ModalReset, ModalRenew } from '../components';
 
 export default class CloudPhone  extends Component {
 	
@@ -49,7 +49,8 @@ export default class CloudPhone  extends Component {
 				}
 			],
 			showGrouping: false,
-			showReset: false
+			showReset: false,
+			showRenew: false
 		}
 	}
 	
@@ -58,12 +59,14 @@ export default class CloudPhone  extends Component {
 			<div>
 				<DeviceActions reset={() =>this.show('showReset')}
 				               move={() => this.show('showGrouping')}
+				               renew={() => this.show('showRenew')}
 				/>
 				<div style={styles.deviceBox}>
 					{this._render()}
 				</div>
-				<Grouping state={this.state.showGrouping} close={() => this.close('showGrouping')}/>
-				<Reset buttonName={{left: '立即重启', right: '取消'}} title='重启云手机' state={this.state.showReset} close={() => this.close('showReset')}/>
+				<ModalReset buttonName={{left: '确定', right: '取消'}} title='重启云手机' state={this.state.showReset} close={() => this.close('showReset')}/>
+				<ModalGrouping buttonName={{left: '立即重启', right: '取消'}} title='移动云手机' state={this.state.showGrouping} close={() => this.close('showGrouping')}/>
+				<ModalRenew buttonName={{left: '确定', right: '取消'}} title='续费云手机' state={this.state.showRenew} close={() => this.close('showRenew')}/>
 			</div>
 			
 		)

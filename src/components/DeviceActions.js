@@ -20,7 +20,7 @@ export default class DeviceActions  extends Component {
 				<Button onClick={this.props.move}  style={styles.button}  name='移动' type='2' />
 				<Button style={styles.button}  name='远程安装' type='2' />
 				<Button style={styles.button}  name='远程运行' type='2' />
-				<Button style={styles.button}  name='续费' type='2' />
+				<Button onClick={this.props.renew} style={styles.button}  name='续费' type='2' />
 			</div>
 		)
 	}
