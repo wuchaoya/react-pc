@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+
+import * as actions from '../actions/actions';
 import DeviceInfo from '../utils/DeviceInfo';
+
 export default (MyComponent) => {
 	class Layer extends Component {
 		constructor() {
@@ -18,12 +22,16 @@ export default (MyComponent) => {
 		}
 		
 		scrolling () {
-			document.querySelector('html').style.overflow = this.props.state !== false ? 'hidden' : 'scroll'
+			document.querySelector('html').style.overflow = this.props.stateData.scrollState === false ? 'hidden' : 'scroll'
+		}
+		
+		componentWillReceiveProps () {
+			this.scrolling()
 		}
 		
 	}
 	
-	return Layer
+	return connect(actions.getStateData, actions)(Layer);
 }
 
 

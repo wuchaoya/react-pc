@@ -2,7 +2,8 @@
  * Created by chao on 2017/10/23.
  */
 
-import * as actionTypes from '../constants/constants'
+import * as actionTypes from '../constants/constants';
+
 
 /**
  * 首页数据
@@ -70,6 +71,54 @@ export function setRememberPasswordState (state) {
 		type: actionTypes.SETREMEMBERPASSWORDSTATE,
 		state: state
 	};
+}
+
+/**
+ * 滚动状态
+ * @param state
+ * @returns {{type, state: *}}
+ */
+export function setScroll (state) {
+	return {
+		type: actionTypes.SETSCROLL,
+		state: state
+	};
+}
+
+// export const login = (user, pass) => async (dispatch) => {
+// 	try {
+// 		dispatch({ type: actionTypes.SETTIPS });
+// 		let { data } = await request.post('/login', { user, pass });
+// 		await dispatch(loadUserData(data.uid));
+// 		dispatch({ type: LOGIN_SUCCESS, data });
+// 	} catch(error) {
+// 		dispatch({ type: LOGIN_ERROR, error });
+// 	}
+// }
+
+/**
+ * 提示
+ * @param state
+ * @returns {{type, state: *}}
+ */
+export  function setTips (state) {
+	return {
+		type: actionTypes.SETTIPS,
+		state: state
+	}
+}
+
+/**
+ * 显示后3秒后自动消失
+ * @returns {function(*)}
+ */
+export function setTipsAsync() {
+	return dispatch => {
+		dispatch(setTips(true))
+		setTimeout( () => {
+			dispatch(setTips(false))
+		},3000)
+	}
 }
 
 /**

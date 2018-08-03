@@ -17,10 +17,14 @@ export default (MyComponent) => {
 				<div style={styles.constants}>
 					<p style={styles.title}>{this.props.title}</p>
 					<MyComponent  {...this.props}/>
-					<div style={styles.buttonContainer}>
-						<div style={Object.assign({}, styles.button, styles.left)}>{this.props.buttonName.left}</div>
-						<div style={Object.assign({}, styles.button, styles.right)}>{this.props.buttonName.right}</div>
-					</div>
+					{this.props.buttonName ?
+						<div style={styles.buttonContainer}>
+							<div style={Object.assign({}, styles.button, styles.left)}>{ this.props.buttonName ? this.props.buttonName.left : null}</div>
+							<div onClick={this.props.close} style={Object.assign({}, styles.button, styles.right)}>{this.props.buttonName ? this.props.buttonName.right : null}</div>
+						</div> :
+						null
+					}
+				
 					<img onClick={this.props.close} src={icon.closeImg} style={styles.close} alt='close' />
 				</div>
 			)

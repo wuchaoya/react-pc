@@ -26,12 +26,19 @@ export {default as ErrorText} from './ErrorText';
 export {default as FileList} from './FileList';
 export {default as UploadRecord} from './UploadRecord';
 export {default as Upload} from './Upload';
-export {default as SelectList} from './SelectList';
 export {default as SelectModal} from './SelectModal';
 export {default as ModalGrouping} from './ModalGrouping';
 export {default as CheckboxList} from './CheckboxList';
 export {default as ModalReset} from './ModalReset';
 export {default as ModalRenew} from './ModalRenew';
+export {default as Tips} from './Tips';
+export {default as Tabs} from './Tabs';
+export {default as ModalRun} from './ModalRun';
+export {default as PlayGameList} from './PlayGameList';
+
+
+
+
 
 
 

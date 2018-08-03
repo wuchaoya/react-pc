@@ -2,10 +2,12 @@
  * 云手机
  */
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import { DeviceActions,  ModalGrouping, ModalReset, ModalRenew } from '../components';
+import {DeviceActions, ModalGrouping, ModalReset, ModalRenew, Tips, ModalRun} from '../components';
+import * as actions from '../actions/actions';
 
-export default class CloudPhone  extends Component {
+class CloudPhone extends Component {
 	
 	constructor (props) {
 		super(props)
@@ -50,34 +52,51 @@ export default class CloudPhone  extends Component {
 			],
 			showGrouping: false,
 			showReset: false,
-			showRenew: false
+			showRenew: false,
+			showRun: false
 		}
 	}
 	
 	render () {
 		return (
 			<div>
-				<DeviceActions reset={() =>this.show('showReset')}
-				               move={() => this.show('showGrouping')}
-				               renew={() => this.show('showRenew')}
+				<DeviceActions
+					reset={() => this.show('showReset')}
+					move={() => this.show('showGrouping')}
+					renew={() => this.show('showRenew')}
+				  run={() => this.show('showRun')}
 				/>
-				<div style={styles.deviceBox}>
-					{this._render()}
-				</div>
-				<ModalReset buttonName={{left: '确定', right: '取消'}} title='重启云手机' state={this.state.showReset} close={() => this.close('showReset')}/>
-				<ModalGrouping buttonName={{left: '立即重启', right: '取消'}} title='移动云手机' state={this.state.showGrouping} close={() => this.close('showGrouping')}/>
-				<ModalRenew buttonName={{left: '确定', right: '取消'}} title='续费云手机' state={this.state.showRenew} close={() => this.close('showRenew')}/>
+				<div style={styles.deviceBox}>{this._render()}</div>
+				<Tips text='正在停止'/>
+				<ModalReset
+					buttonName={{left: '确定', right: '取消'}}
+					title='重启云手机' state={this.state.showReset}
+					close={() => this.close('showReset')}/>
+				<ModalGrouping
+					buttonName={{left: '立即重启', right: '取消'}}
+					title='移动云手机'
+					state={this.state.showGrouping}
+					close={() => this.close('showGrouping')}/>
+				<ModalRenew
+					buttonName={{left: '确定', right: '取消'}}
+					title='续费云手机'
+					state={this.state.showRenew}
+					close={() => this.close('showRenew')}/>
+				<ModalRun
+					title='请选择需要运行的云手机'
+					state={this.state.showRun}
+					close={() => this.close('showRun')}/>
 			</div>
-			
+		
 		)
 	}
 	
 	close (key) {
-		this.setState({[key]: false})
+		this.setState({[key]: false}, () => this.props.setScroll(false))
 	}
 	
 	show (key) {
-		this.setState({[key]: true})
+		this.setState({[key]: true}, () => this.props.setScroll(false))
 	}
 	
 	_render () {
@@ -88,7 +107,7 @@ export default class CloudPhone  extends Component {
 					<div style={styles.time}>{'剩余时间：' + item.time}</div>
 					<div style={styles.phone}>
 						<div style={styles.img}>
-							<img  src={item.img} alt=""/>
+							<img src={item.img} alt=""/>
 						</div>
 					</div>
 				</div>
@@ -96,7 +115,13 @@ export default class CloudPhone  extends Component {
 		})
 	}
 	
+	componentWillMount () {
+		this.props.setTipsAsync()
+	}
+	
 }
+
+export default connect(actions.getStateData, actions)(CloudPhone);
 
 const styles = {
 	name: {
@@ -129,7 +154,7 @@ const styles = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginTop:'48px',
+		marginTop: '48px',
 		flexDirection: 'column',
 	},
 	deviceBox: {
