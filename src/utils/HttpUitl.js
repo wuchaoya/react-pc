@@ -1,11 +1,14 @@
 let { fetch } = window;
+
 export default class HttpUitl {
+	
 	static Post (path, parameter, headers, callbackSuccess, callbackError) {
-		fetch('/pro' + path, {
+		fetch( path, {
 			method: 'POST',
 			headers: headers,
 			body: this.ObjectToFromData(parameter)
 	}).then((response) => {
+			console.log(response)
 			return response.json();
 		}).then((responseJson) => {
 			callbackSuccess(responseJson);
@@ -15,7 +18,7 @@ export default class HttpUitl {
 	}
 	
 	static Get (path, parameter, callbackSuccess, callbackError) {
-		fetch('/pro' + path + this.ObjectToFromData(parameter)).then((response) => {
+		fetch(path + this.ObjectToFromData(parameter)).then((response) => {
 			console.log(response)
 			return response.json();
 		}).then((responseJson) => {

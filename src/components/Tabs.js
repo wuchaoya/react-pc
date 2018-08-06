@@ -17,9 +17,11 @@ export default class  extends Component {
 	
 	render () {
 		return (
-				<Tabs defaultActiveKey="0" >
-					{this._renderTabItems()}
-				</Tabs>
+				<div>
+					<Tabs defaultActiveKey="0"  tabBarStyle={{borderBottom: '0'}}>
+						{this._renderTabItems()}
+					</Tabs>
+				</div>
 		)
 	}
 	

@@ -13,16 +13,16 @@ export default class HttpRequest {
 					clientType: 1,
 					mobile: data.mobile,
 					clientId: result,
-					timestamp: time
+					timestamp: time,
 				}
 				let headerData= {
-					'Accept': 'application/json',
 					'Content-Type': 'application/x-www-form-urlencoded',
 					'clientType': 1,
 					'mobile': data.mobile,
 					'clientId': result,
 					'timestamp': time ,
-					'Sign': ParameterHash.encrypt(parameter,signData)
+					'Sign': ParameterHash.encrypt(parameter,signData),
+					'appKey': '5WtKrLZP'
 				}
 				let pathRE = /^api$/
 				pathRE.test(path) === false || (headerData.authInfo = data.authInfo)

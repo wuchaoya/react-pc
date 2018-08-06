@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 
 import {DeviceActions, ModalGrouping, ModalReset, ModalRenew, Tips, ModalRun} from '../components';
 import * as actions from '../actions/actions';
+import  { height } from '../utils/DeviceInfo';
 
 class CloudPhone extends Component {
 	
@@ -135,7 +136,7 @@ const styles = {
 		marginBottom: '12px'
 	},
 	phone: {
-		width: '200px',
+		width: '194px',
 		height: '360px',
 		background: '#fff',
 		borderRadius: '18px',
@@ -154,12 +155,15 @@ const styles = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginTop: '48px',
+		marginBottom: '48px',
 		flexDirection: 'column',
 	},
 	deviceBox: {
 		width: '1100px',
 		display: 'flex',
 		flexWrap: 'wrap',
+		overflowY: 'scroll',
+		height: height - 260,
+		marginTop: '50px'
 	}
 }

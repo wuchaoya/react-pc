@@ -90,7 +90,6 @@ const styles = {
 		width: '1100px',
 		marginTop: '36px',
 		position: 'relative',
-		height: '1000px'
 	},
 	selectInputContainer: {
 		height: '48px',
