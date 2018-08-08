@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import { HomeStyle }from '../style/HomeStyle';
+import { Detail } from '../components';
 
 export default class  extends Component {
 	
@@ -28,7 +29,7 @@ export default class  extends Component {
 					actualPrice: '¥666.00',
 					tradingResults: '0',
 					deploymentResults: '0',
-					action: '查看详情'
+					
 				},
 				{
 					time: '2018-04-12',
@@ -39,7 +40,7 @@ export default class  extends Component {
 					actualPrice: '¥666.00',
 					tradingResults: '1',
 					deploymentResults: '1',
-					action: '查看详情'
+					
 				},
 				{
 					time: '2018-04-12',
@@ -50,9 +51,10 @@ export default class  extends Component {
 					actualPrice: '¥666.00',
 					tradingResults: '2',
 					deploymentResults: '2',
-					action: '查看详情'
+					
 				}
-			]
+			],
+			showDetail: false
 		}
 	}
 	
@@ -61,6 +63,7 @@ export default class  extends Component {
 			<div style={HomeStyle.container}>
 				{this._renderListTitle()}
 				{this._renderListItem()}
+				<Detail close={() => this.setState({showDetail: false})} state={this.state.showDetail} />
 			</div>
 		)
 	}
@@ -77,6 +80,7 @@ export default class  extends Component {
 							)
 						})
 					}
+					<span onClick={() => this.setState({showDetail: true})} style={Object.assign({}, styles.action, Object.assign({},  {color: '#fc8056',cursor: 'pointer'}, styles.center))}>查看详情</span>
 				</div>
 			)
 		})
@@ -97,12 +101,6 @@ export default class  extends Component {
 	}
 	
 	_renderData (type,name, value ) {
-		if (name === 'action') {
-			return {
-				style : Object.assign({},  {color: '#fc8056',cursor: 'pointer'}, styles.center),
-				text: '查看详情'
-			}
-		}
 		if (name === 'tradingResults' || name === 'deploymentResults') {
 			switch (Number(type)) {
 				case 0:

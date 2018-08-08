@@ -182,6 +182,7 @@ html {
 }
 body {
     overflow: hidden;
+    background: #fafafa;
 }
 html::-webkit-scrollbar {
     display: none;

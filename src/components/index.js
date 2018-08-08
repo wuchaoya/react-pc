@@ -35,6 +35,14 @@ export {default as Tips} from './Tips';
 export {default as Tabs} from './Tabs';
 export {default as ModalRun} from './ModalRun';
 export {default as PlayGameList} from './PlayGameList';
+export {default as Detail} from './Detail';
+export {default as OperationList} from './OperationList';
+export {default as OperationHead} from './OperationHead';
+export {default as Page} from './Page';
+
+
+
+
 
 
 

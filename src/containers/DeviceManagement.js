@@ -20,7 +20,7 @@ export default class DeviceManagement  extends Component {
 	render () {
 		return (
 			<div style={HomeStyle.container}>
-				<DeviceTitle onClick={() => this.setState({showFileList: true})} />
+				<DeviceTitle history={this.props.history} onClick={() => this.setState({showFileList: true})} />
 				<SelectNav>
 					<Route exact render={() => <Redirect to='/home/list/1'/>}  path='/home/list/' />
 					<Route exact path='/home/list/:id' component={CloudPhone}/>

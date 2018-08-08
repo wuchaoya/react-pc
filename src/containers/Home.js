@@ -7,7 +7,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import * as actions from '../actions/actions';
 import {TabNav, } from '../components';
-import { HomeBuy, PersonalCenter, DeviceManagement } from '../containers';
+import { HomeBuy, PersonalCenter, DeviceManagement, Operation } from '../containers';
 
 
 
@@ -24,6 +24,7 @@ class Home extends Component {
 				<Route path='/home/buy' component={HomeBuy}/>
 				<Route exact render={() => <Redirect to='/home/user/list'/>}  path='/home/user' />
 				<Route path='/home/user' component={PersonalCenter}/>
+				<Route path='/home/operation' component={Operation}/>
 			</TabNav>
 		)
 	}

@@ -12,7 +12,10 @@ export default class DeviceTitle extends Component {
 	render () {
 		return (
 			<div style={styles.container}>
-				<HomeTitle title='云手机设备管理'/>
+				<div style={styles.titleContainer}>
+					<HomeTitle title='云手机设备管理'/>
+					<h2 onClick={() => this.props.history.push('/home/operation')} style={styles.text}>操作记录</h2>
+				</div>
 				<Button onClick={this.props.onClick} style={styles.button}  name='上传、管理文件' type='2' />
 			</div>
 		)
@@ -34,4 +37,14 @@ const styles = {
 		height: '96px',
 		borderBottom: '1px solid #eee'
 	},
+	titleContainer: {
+		display: 'flex',
+		alignItems: 'center'
+	},
+	text: {
+		fontSize: '16px',
+		color: '#fc8056',
+		marginLeft: '16px',
+		cursor: 'pointer'
+	}
 }

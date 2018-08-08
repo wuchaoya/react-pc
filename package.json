@@ -6,6 +6,7 @@
     "antd": "^3.7.3",
     "crypto-js": "^3.1.9-1",
     "fingerprintjs2": "^1.8.1",
+    "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

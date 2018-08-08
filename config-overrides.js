@@ -18,12 +18,10 @@ module.exports = {
 			if (deploy) {
 				const TARGET = process.env.npm_lifecycle_event;
 				proxy =  [{
-					context: ["/pub", "/api"],
+					context: ['/pub', '/api'],
 					target: WebHost[TARGET],
 				}]
 			}
-			console.log(proxy)
-			console.log(process.env)
 			const config = configFunction(proxy, allowedHost);
 			return config;
 		}
