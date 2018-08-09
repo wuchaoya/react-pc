@@ -46,7 +46,7 @@ export default  class PlayGameList extends Component {
 							})} style={styles.operate}>收起</span>
 						}
 					</div>
-					{item.state? <CheckboxList scroll={{height: '180px'}}/> : null}
+					{item.state? <CheckboxList button={true} scroll={{height: '180px'}}/> : null}
 				</div>
 			)
 		})

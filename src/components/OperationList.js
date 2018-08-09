@@ -1,3 +1,6 @@
+/**
+ * 操作详情列表
+ */
 import React, {Component} from 'react';
 
 export default class  extends Component {
@@ -170,7 +173,8 @@ const styles = {
 		overflowY: 'scroll'
 	},
 	action: {
-		color: '#fc8056'
+		color: '#fc8056',
+		cursor: 'pointer'
 	},
 	success: {
 		color: '#08CC06'

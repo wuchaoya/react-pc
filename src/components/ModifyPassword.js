@@ -27,7 +27,7 @@ class ModifyPassword  extends Component {
 			<div style={styles.container}>
 				<div style={styles.inputBox}>
 				<Title text={placeholder.modifyPasswordText} />
-				<LoginInput type='text' placeholder={placeholder.userText} />
+				<p style={styles.mobile}>已绑定手机号：10086</p>
 				<VerificationCode  data={this.props} name='signUpCode' />
 				<LoginInput type='passworld' placeholder={placeholder.passText} />
 				<LoginInput type='passworld' placeholder={placeholder.againPasswordText} />

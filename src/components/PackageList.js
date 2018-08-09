@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { SelectInput, NumberInput, PaymentButton } from '../components';
+import {NumberInput, PaymentButton, SelectRadio, Contact, Select } from '../components';
 
 export default class PackageList  extends Component {
 	
@@ -12,12 +12,14 @@ export default class PackageList  extends Component {
 	render () {
 		return (
 			<div>
-				<SelectInput name='请选择套餐'/>
-				<SelectInput name='请选择分组'/>
+				<Select name='请选择套餐'/>
+				<Select name='请选择分组'/>
 				<NumberInput name='请输入购买个数'/>
-				<SelectInput name='请选择打折券'/>
-				<SelectInput name='请选择代金券'/>
+				<Select name='请选择打折券'/>
+				<Select name='请选择代金券'/>
+				<SelectRadio/>
 				<PaymentButton />
+				<Contact/>
 			</div>
 		)
 	}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Input } from 'antd';
 
 export default class NumberInput  extends Component {
 	
@@ -13,8 +14,7 @@ export default class NumberInput  extends Component {
 				<span style={styles.text}>
 					{this.props.name}
 				</span>
-				<input style={styles.input} type="text"/>
-				<i style={styles.icon}>+</i>
+				<Input style={styles.input} type="text"/>
 			</div>
 		)
 	}
@@ -36,9 +36,7 @@ const styles = {
 	},
 	input: {
 		width: '120px',
-		height: '44px',
-		border: '1px solid #d1d1d1',
-		background: '#fafafa',
+		height: '38px',
 	},
 	icon: {
 		color: '#555',

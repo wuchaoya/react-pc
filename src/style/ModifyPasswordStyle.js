@@ -12,5 +12,10 @@ export const styles = {
 		padding: '36px',
 		width: '400px',
 		height: '480px'
+	},
+	mobile: {
+		height: '48px',
+		marginTop: '15px',
+		marginBottom: '15px'
 	}
 }

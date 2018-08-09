@@ -15,4 +15,10 @@ export const closeImg = require('../static/close.png');
 export const selectNavImg = require('../static/select-nav-icon.png');
 export const selectRenameImg = require('../static/select-rename.png');
 export const selectStateImg = require('../static/select-state.png');
+export const blankSpaceImg = require('../static/blank-space.png');
+export const deleteImg = require('../static/red-close.png');
+export const selectIconImg = require('../static/select-icon.png');
+
+
+
 

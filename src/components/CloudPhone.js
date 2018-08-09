@@ -54,7 +54,9 @@ class CloudPhone extends Component {
 			showGrouping: false,
 			showReset: false,
 			showRenew: false,
-			showRun: false
+			showRun: false,
+			restore: false,
+			install: false
 		}
 	}
 	
@@ -66,6 +68,8 @@ class CloudPhone extends Component {
 					move={() => this.show('showGrouping')}
 					renew={() => this.show('showRenew')}
 				  run={() => this.show('showRun')}
+					restore={() => this.show('restore')}
+					install={() => this.show('install')}
 				/>
 				<div style={styles.deviceBox}>{this._render()}</div>
 				<Tips text='正在停止'/>
@@ -73,6 +77,10 @@ class CloudPhone extends Component {
 					buttonName={{left: '确定', right: '取消'}}
 					title='重启云手机' state={this.state.showReset}
 					close={() => this.close('showReset')}/>
+				<ModalReset
+					buttonName={{left: '确定', right: '取消'}}
+					title='恢复出厂' state={this.state.restore}
+					close={() => this.close('restore')}/>
 				<ModalGrouping
 					buttonName={{left: '立即重启', right: '取消'}}
 					title='移动云手机'
@@ -82,11 +90,18 @@ class CloudPhone extends Component {
 					buttonName={{left: '确定', right: '取消'}}
 					title='续费云手机'
 					state={this.state.showRenew}
+					ok={() => this.props.history.push('/home/renewal')}
 					close={() => this.close('showRenew')}/>
 				<ModalRun
+					button={true}
 					title='请选择需要运行的云手机'
 					state={this.state.showRun}
 					close={() => this.close('showRun')}/>
+				<ModalRun
+					button={true}
+					title='请选择需要安装的云手机'
+					state={this.state.install}
+					close={() => this.close('install')}/>
 			</div>
 		
 		)

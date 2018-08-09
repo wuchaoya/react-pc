@@ -15,30 +15,34 @@ export default class SelectNav extends Component {
 					id: 1
 				},
 				{
-					name: '默认分组',
+					name: '默认分组2',
 					id: 2
 				},
 				{
-					name: '默认分组',
+					name: '默认分组3',
 					id: 1
 				},
 				{
-					name: '默认分组',
+					name: '默认分组4',
 					id: 2
 				},{
-					name: '默认分组',
+					name: '默认分组5',
 					id: 1
 				},
 				{
-					name: '默认分组',
+					name: '默认分组6',
 					id: 2
 				}
 			],
 			select: {
 				name: '默认分组'
 			},
-			showSelectList: true,
-			managementState: false
+			showSelectList: false,
+			managementState: false,
+			inputValue: {
+				name: '默认分组',
+				id: 1
+			}
 		}
 	}
 	
@@ -47,7 +51,8 @@ export default class SelectNav extends Component {
 			<div style={styles.container}>
 				<div style={styles.selectInputContainer}>
 					<img style={styles.selectIcon} src={icon.selectNavImg} alt=""/>
-					<input onFocus={() => this.setState({showSelectList: true})} onBlur={() => this.setState({showSelectList: false})} id='select' style={styles.selectInput} type="text" placeholder='请输入分组名'/>
+					<input onChange={e => this.setState({inputValue: {name: e.target.value,id: this.state.inputValue.id}})} value={this.state.inputValue.name} onClick={() => this.setState({showSelectList: true})} id='select' style={styles.selectInput} type="text" placeholder='请输入分组名'/>
+					<img style={styles.selectRight} src={icon.selectIconImg} alt=""/>
 						{this._render()}
 				</div>
 				{this.props.children}
@@ -65,13 +70,13 @@ export default class SelectNav extends Component {
 					if (this.state.managementState) {
 						return (
 							<div key={index} className='listHove' style={styles.listItem}>
-								<img style={styles.renameIcon} src={icon.selectRenameImg} alt=""/>
-								<input disabled style={styles.displayInput} type="text" defaultValue={item.name}/>
-								<img style={styles.deleteIcon} src={icon.closeImg} alt=""/>
+								<img onClick={() => this.setDisable(index)} style={styles.renameIcon} src={icon.selectRenameImg} alt=""/>
+								<input onChange={e => this.setName(index, e.target.value)} disabled={item.disable !== true} style={styles.displayInput} type="text" value={item.name}/>
+								<img style={styles.deleteIcon} src={icon.deleteImg} alt=""/>
 							</div>
 						)
 					}
-					return <span className='listHove' style={styles.listItem} key={index}>{item.name}</span>
+					return <span onClick={() => this.setState({inputValue: item, showSelectList: false})} className='listHove' style={styles.listItem} key={index}>{item.name}</span>
 				})}
 				</div>
 				{this.state.managementState ?
@@ -80,6 +85,22 @@ export default class SelectNav extends Component {
 				}
 			</div>
 		) : null
+	}
+	
+	setDisable (index) {
+		let {list} = this.state;
+		list[index].disable = true;
+		this.setState({
+			list: list
+		})
+	}
+	
+	setName (index, name) {
+		let {list} = this.state;
+		list[index].name = name;
+		this.setState({
+			list: list
+		})
 	}
 }
 
@@ -108,6 +129,11 @@ const styles = {
 	selectIcon: {
 		position: 'absolute',
 		left: '12px',
+		width: '12px'
+	},
+	selectRight: {
+		position: 'absolute',
+		right: '12px',
 		width: '12px'
 	},
 	listContainer: {

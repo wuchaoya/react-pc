@@ -136,3 +136,32 @@ location @fallback
          rewrite .* /index.html break;
         }
 ```
+
+### 其他问题
+
+
+1. 项目中获取手机验证码倒计时,在倒计时中切换路由，再切换回来保持倒计时。
+
+2. redux的基本用法
+
+3. redux的实际应用场景
+
+4. redux的中间件
+
+5. redux 一次多个dispatch 
+
+6. import的几种写法，import和require区别
+
+7. es6的新特性
+
+8. react高阶组件  
+
+9. react组件封装
+
+10. react-router4.0路由嵌套
+
+11. react-router4.0 默认路由
+
+12.  有/api /pub 开头的接口本地开发环境请求设置代理
+
+13. 不同启动命令对应不通的环境

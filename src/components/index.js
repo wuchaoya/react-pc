@@ -39,6 +39,13 @@ export {default as Detail} from './Detail';
 export {default as OperationList} from './OperationList';
 export {default as OperationHead} from './OperationHead';
 export {default as Page} from './Page';
+export {default as SelectRadio} from './SelectRadio';
+export {default as Contact} from './Contact';
+export {default as Select} from './Select';
+export {default as BlankSpace} from './BlankSpace';
+export {default as Renewal} from './Renewal';
+
+
 
 
 

@@ -26,7 +26,7 @@ const styles = {
 		height: '44px',
 		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'flex-end'
+		justifyContent: 'flex-end',
 	},
 	text: {
 		fontSize: '12px',

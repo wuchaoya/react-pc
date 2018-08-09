@@ -106,7 +106,6 @@ const styles = {
 		width: '100%'
 	},
 	children: {
-		background: '#fafafa',
 		width: '100%',
 		padding: '24px',
 		display: 'flex',

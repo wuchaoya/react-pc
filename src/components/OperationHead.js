@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import { Button } from '../components';
 import { Select, DatePicker } from 'antd';
+import '../style/selectInput.css'
 
 export default class  extends Component {
 	
@@ -30,8 +31,11 @@ export default class  extends Component {
 					</div>
 					<div style={styles.inputContainer}>
 						<span>状态</span>
-						<Select onChange={this.handleChange} style={styles.selectInput}>
-							<Select.Option value="成功">成功</Select.Option>
+						<Select dropdownClassName="select" onChange={this.handleChange} style={styles.selectInput}>
+							<Select.Option value="1">成功1</Select.Option>
+							<Select.Option value="2">成功2</Select.Option>
+							<Select.Option value="3">成功3</Select.Option>
+							<Select.Option value="4">成功4</Select.Option>
 						</Select>
 					</div>
 					<div style={styles.inputContainer}>

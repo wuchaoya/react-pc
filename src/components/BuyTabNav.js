@@ -48,8 +48,8 @@ import { vipImg, vipHoverImg, gvipImg, gvipHoverImg } from '../constants/images'
 			return (
 				<Link  onClick={() => this._onClick(item)}  key={index} style={style.tabItem} to={ '/home/buy/' + item}>
 					<img src={icon} alt={title} />
-					<span>{title}</span>
-					<span>{depict}</span>
+					<span style={style.title}>{title}</span>
+					<span style={style.depict}>{depict}</span>
 				</Link>
 			)
 		})
@@ -79,6 +79,7 @@ const style = {
 	},
 	title: {
 		fontSize: '16px',
+		marginTop: '12px'
 	},
 	depict: {
 		fontSize: '14px'

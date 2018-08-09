@@ -11,7 +11,8 @@ export default class SelectInput  extends Component {
 				{name: '套餐1'},
 				{name: '套餐2'},
 			],
-			select: false
+			select: false,
+			hover: []
 		}
 	}
 	
@@ -37,9 +38,26 @@ export default class SelectInput  extends Component {
 			return
 		}
 		return this.state.list.map((item, index) => {
-			return <li style={styles.listItem} key={index}>{item.name}</li>
+			return <li onMouseEnter={() =>this._onHoverState(index,true)}
+			           onMouseLeave={() =>this._onHoverState(index,false)}
+			           style={this.state.hover[index]  === true ? Object.assign({}, styles.listItem, styles.hover) : styles.listItem  }
+			           key={index}>{item.name}</li>
 		})
 	}
+	_onHoverState (index, bool) {
+		let arr = this.state.hover
+		arr[index] = bool;
+		this.setState({
+			hover: arr
+		})
+	}
+	
+	_onClick (item) {
+		this.setState({
+			tabName: item
+		})
+	}
+	
 	__select () {
 		this.setState({
 			select: !this.state.select
@@ -85,7 +103,7 @@ const styles = {
 		position: 'absolute',
 		left: '0',
 		width: '260px',
-		background: '#eee',
+		background: '#fff',
 		zIndex: '2'
 	},
 	listItem: {
@@ -93,7 +111,6 @@ const styles = {
 		display: 'flex',
 		alignItems: 'center',
 		paddingLeft: '12px',
-		border: '1px solid #fff'
 	},
 	iconBox: {
 		display: 'flex',
@@ -106,5 +123,8 @@ const styles = {
 	},
 	iconUp: {
 		transform:'rotate(180deg)'
+	},
+	hover: {
+		background: '#f5f5f5'
 	}
 }

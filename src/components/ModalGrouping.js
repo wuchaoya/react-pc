@@ -3,14 +3,15 @@
  */
 import React, {Component} from 'react';
 
-import { SelectModal, CheckboxList } from '../components'
+
+import { SelectModal, CheckboxList, Select, BlankSpace } from '../components'
 
 class ModalGrouping  extends Component {
 	
 	constructor (props) {
 		super(props)
 		this.state = {
-			text: '请选择要移动到的分组'
+			text: '',
 		}
 	}
 	
@@ -18,16 +19,16 @@ class ModalGrouping  extends Component {
 		return (
 			<div>
 				<div style={styles.container}>
-					<span style={styles.lable}>选择需要移动到的分组</span>
-					<input style={styles.input} type="text" placeholder='默认分组'/>
+					<Select textStyle={styles.selectText} style={styles.selectContainer} name='选择需要移动到的分组'/>
 					<span style={styles.errText}>{this.state.text}</span>
 				</div>
-				<CheckboxList scroll={{height: '220px'}}/>
+				{this.state.data ? <CheckboxList scroll={{height: '220px'}}/> : <BlankSpace/>}
 			</div>
 		)
 	}
 }
 export default SelectModal(ModalGrouping)
+
 const styles = {
 	container: {
 		display: 'flex',
@@ -48,5 +49,11 @@ const styles = {
 		fontSize: '14px',
 		color: '#d82e2e',
 		marginLeft: '8px'
+	},
+	selectContainer: {
+		margin: '0'
+	},
+	selectText: {
+		width: 'auto'
 	}
 }
