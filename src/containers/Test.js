@@ -1,19 +1,27 @@
 import React, {Component} from 'react';
 
 import { Checkbox, Row, Col } from 'antd';
-
+import { connect } from 'react-redux';
+import Fingerprint2 from 'fingerprintjs2';
+import aopMonitor from '../utils/aopMonitor';
+import watchList from '../utils/monitor';
 
 const plainOptions = ['A', 'B', 'C','D','E'];
 const defaultCheckedList = ['A', 'B'];
 
 
-export default class Test extends Component {
-	state = {
-		checkedList: defaultCheckedList,
-		indeterminate: true,
-		checkAll: false,
-		value: []
-	};
+@connect(state => ({ stateData: state.update }))
+@aopMonitor(watchList)
+class  Test extends Component {
+	constructor (props) {
+		super(props)
+		this.state = {
+			checkedList: defaultCheckedList,
+			indeterminate: true,
+			checkAll: false,
+			value: []
+		};
+	}
 	
 	render() {
 		return (
@@ -54,5 +62,22 @@ export default class Test extends Component {
 			checkAll: e.target.checked,
 		});
 	}
+	getResult() {
+		return new Promise(function(resolve, reject) {
+			new Fingerprint2().get((result) => {
+				resolve(result)
+			})
+		});
+	}
+	
+	
+	async componentWillMount () {
+		
+		let data = await this.getResult();
+		console.log(data);
+		console.log(this.props.stateData)
+	}
 }
+
+export default Test;
 

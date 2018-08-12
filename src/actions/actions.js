@@ -3,6 +3,8 @@
  */
 
 import * as actionTypes from '../constants/constants';
+import Encryption from '../utils/Encryption';
+import asyncFetch from '../utils/asyncFetch'
 
 
 /**
@@ -85,16 +87,16 @@ export function setScroll (state) {
 	};
 }
 
-// export const login = (user, pass) => async (dispatch) => {
-// 	try {
-// 		dispatch({ type: actionTypes.SETTIPS });
-// 		let { data } = await request.post('/login', { user, pass });
-// 		await dispatch(loadUserData(data.uid));
-// 		dispatch({ type: LOGIN_SUCCESS, data });
-// 	} catch(error) {
-// 		dispatch({ type: LOGIN_ERROR, error });
-// 	}
-// }
+export const login = (data) => async (dispatch) => {
+	try {
+		dispatch({ type: actionTypes.SETTIPS });
+		let  res = await asyncFetch.Post('/pub/user/login',data)
+		await console.log(res)
+		await dispatch(loginSucces(Encryption.decayFun(res.result, 'NgAbCJJGfUlQ6653', '')));
+	} catch(error) {
+		dispatch(loginError(error));
+	}
+}
 
 /**
  * 提示
@@ -118,6 +120,19 @@ export function setTipsAsync() {
 		setTimeout( () => {
 			dispatch(setTips(false))
 		},3000)
+	}
+}
+
+export function loginError (err) {
+	return {
+		type: actionTypes.LOGIN_ERROR,
+		error: err
+	}
+}
+export function loginSucces (data) {
+	return {
+		type: actionTypes.LOGIN_SUCCESS,
+		data: data
 	}
 }
 

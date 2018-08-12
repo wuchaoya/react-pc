@@ -9,11 +9,11 @@ import * as placeholder from '../constants/placeholder';
 import { loginStyle } from '../style/LoginStyle';
 import * as HistoryPush from '../utils/HistoryPush';
 import HttpRequest from '../utils/HttpRequest';
+import Encryption from '../utils/Encryption';
 import {
 	Button, LoginInput, InputView, Title, SubTitle, PasswordCheckBox, ErrorText
 } from '../components';
 import { passWordRE, mobileRE } from '../utils/RE';
-
 
 class SignIn  extends Component {
 	
@@ -35,7 +35,7 @@ class SignIn  extends Component {
 				<Title center text={placeholder.titleText} />
 				<SubTitle text={placeholder.subTitleText} margin={loginStyle.subTitleMargin} />
 				<LoginInput value={this.state.userName} onChange={() => this.setValue('userName')} ref='userName' name='userName' type='text' placeholder={placeholder.userText} />
-				<LoginInput value={this.state.passWord} onChange={() => this.setValue('passWord')} ref='passWord' name='passWord' type='text' placeholder={placeholder.passText} />
+				<LoginInput value={this.state.passWord} onChange={() => this.setValue('passWord')} ref='passWord' name='passWord' type='passWord' placeholder={placeholder.passText} />
 				<PasswordCheckBox  onclickForgotPassword={() => this.passwordHistoryPush()} margin={loginStyle.checkBox} />
 				<ErrorText text={this.state.errText}/>
 				<Button onClick={() => this.inputValidation()} margin={this.state.errText === '' ? loginStyle.topButton : loginStyle.showTextMargin} name={placeholder.siginButtonText} type='1' />
@@ -45,11 +45,11 @@ class SignIn  extends Component {
 	}
 	
 	setValue (key) {
-		this.setState({
-			[key]: this.refs[key].refs[key].value
-		}, () => {
-			console.log(passWordRE.test(this.state.passWord))
-		})
+				this.setState({
+					[key]: this.refs[key].refs[key].value
+				}, () => {
+					console.log(passWordRE.test(this.state.passWord))
+				})
 	}
 	
 	signIn () {
@@ -69,6 +69,9 @@ class SignIn  extends Component {
 			},
 			(res) => {
 				console.log(res);
+				Encryption.decayFun(res.result, 'NgAbCJJGfUlQ6653', '')
+				this.props.loginSucces(res.result)
+				window.localStorage.setItem('userInfo', res.result)
 				this.homeHistoryPush()
 			},
 			(err) => {
@@ -128,6 +131,7 @@ class SignIn  extends Component {
 	componentWillReceiveProps () {
 	
 	}
+	
 	
 }
 export default connect(actions.getStateData, actions)(SignIn = InputView(SignIn));

@@ -14,6 +14,43 @@ yarn start
 yarn build
 ```
 
+### 查看build后项目
+```
+http-server -o -P http://172.16.2.220:8760
+-p 要使用的端口（默认为8080）
+
+-a 要使用的地址（默认为0.0.0.0）
+
+-d 显示目录列表（默认为“True”）
+
+-i 显示autoIndex（默认为“True”）
+
+-g或--gzip启用时（默认为“False”），它将用于./public/some-file.js.gz代替./public/some-file.jsgzip压缩版本的文件，并且该请求接受gzip编码。
+
+-e或--ext默认文件扩展名（如果没有提供）（默认为'html'）
+
+-s或--silent从输出中抑制日志消息
+
+--cors通过Access-Control-Allow-Origin标题启用CORS
+
+-o 启动服务器后打开浏览器窗口
+
+-c设置缓存控制max-age头的缓存时间（以秒为单位），例如-c10 10秒（默认为'3600'）。要禁用缓存，请使用-c-1。
+
+-U或--utc在日志消息中使用UTC时间格式。
+
+-P或--proxy代理无法在本地解决给定网址的所有请求。例如：-P http://someurl.com
+
+-S或--ssl启用https。
+
+-C或--certssl证书文件的路径（默认值：cert.pem）。
+
+-K或--keyssl密钥文件的路径（默认值：key.pem）。
+
+-r或者--robots提供一个/robots.txt（其内容默认为'User-agent：* \ nDisallow：/'）
+
+-h或--help打印此列表并退出。
+```
 ### 项目结构
 ```
 ├── README.md
@@ -128,13 +165,42 @@ yarn build
 ### nginx 配置
 
 ```
-location / {
-              try_files $uri @fallback;
-           }
-location @fallback 
-        {
-         rewrite .* /index.html break;
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    # api 代理服务地址
+    upstream server-api{
+        server 172.16.2.220:8760;
+    }
+    server {
+        listen       8080;
+        server_name  localhost;
+        # 匹配 api 的请求代理到API服务
+        location ^~/api/ {
+          rewrite ^/(.*)$ /$1 break;
+          proxy_pass http://server-api;
         }
+        # 匹配 pub 的请求代理到API服务
+        location ^~/pub/ {
+          rewrite ^/(.*)$ /$1 break;
+          proxy_pass http://server-api;
+        }
+        # 路由在前端，后端没有真实路由，在路由不存在的 404状态的页面返回 /index.html
+        location / {
+            try_files $uri $uri/ /index.html =404;
+        }
+    }
+    include servers/*;
+}
+
 ```
 
 ### 其他问题

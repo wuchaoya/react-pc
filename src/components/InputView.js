@@ -6,33 +6,20 @@ import React, {Component} from 'react';
 
 import * as images from '../constants/images';
 
-export default (MyComponent) => {
+export default  (MyComponent) => {
 	class NewComponent extends Component {
-		constructor() {
-			super();
-			this.state = {
-				username: ''
-			}
-		}
-		
-		componentWillMount() {
-			let username = localStorage.getItem('username');
-			this.setState({
-				username: username
-			})
-		}
-		
 		render() {
 			return (
 				<div style={styles.container}>
 					<div style={styles.backgroundImg}>
 						<div style={styles.inputBox}>
-							<MyComponent data={this.state.data} {...this.props} username={this.state.username}/>
+							<MyComponent{...this.props}/>
 						</div>
 					</div>
 				</div>
 			)
 		}
+		
 	}
 	
 	return NewComponent

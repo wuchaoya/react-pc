@@ -6,7 +6,8 @@ import {Route,} from 'react-router-dom';
 
 import { UserTabNav, List, ModifyPassword } from '../components';
 
-export default class PersonalCenter  extends Component {
+
+ class PersonalCenter  extends Component {
 	
 	constructor (props) {
 		super(props)
@@ -23,4 +24,8 @@ export default class PersonalCenter  extends Component {
 			</div>
 		)
 	}
+	
+	
 }
+
+export default PersonalCenter;

@@ -1,10 +1,13 @@
 const WebHost = require('./webHost');
 const {injectBabelPlugin} = require('react-app-rewired');
+const rewirePreact = require('react-app-rewire-preact');
 const rewireLess = require('react-app-rewire-less');
-
 const deploy = true;
 module.exports = {
 	webpack: function (config, env) {
+		config = rewirePreact(config, env);
+		console.log(config)
+		config = injectBabelPlugin('transform-decorators-legacy', config)
 		config = injectBabelPlugin(['import', {libraryName: 'antd', libraryDirectory: 'es', style: 'css'}], config);
 		config = injectBabelPlugin(['import', {libraryName: 'antd', style: true}], config);
 		config = rewireLess.withLoaderOptions({

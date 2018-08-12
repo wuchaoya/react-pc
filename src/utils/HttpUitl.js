@@ -17,8 +17,11 @@ export default class HttpUitl {
 		});
 	}
 	
-	static Get (path, parameter, callbackSuccess, callbackError) {
-		fetch(path + this.ObjectToFromData(parameter)).then((response) => {
+	static Get (path, parameter,headers, callbackSuccess, callbackError) {
+		fetch(path + this.ObjectToFromData(parameter), {
+			method: 'GET',
+			headers: headers,
+		}).then((response) => {
 			console.log(response)
 			return response.json();
 		}).then((responseJson) => {

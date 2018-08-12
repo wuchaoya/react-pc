@@ -15,7 +15,9 @@ let initialState = {
 	fingerprint: '',
 	checkedPassWord: false,
 	scrollState: true,
-	tips: false
+	tips: false,
+	userInfo: null,
+	loginError: null
 };
 
 export default function update (state = initialState, action) {
@@ -34,6 +36,10 @@ export default function update (state = initialState, action) {
 			return Object.assign({}, state, {scrollState: action.state})
 		case actionTypes.SETTIPS:
 			return Object.assign({}, state, {tips: action.state})
+		case actionTypes.LOGIN_SUCCESS:
+			return Object.assign({}, state, {userInfo: action.data})
+		case actionTypes.LOGIN_ERROR:
+			return Object.assign({}, state, {loginError: action.error})
     default:
       return state;
   }
